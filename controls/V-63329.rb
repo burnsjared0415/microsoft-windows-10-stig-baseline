@@ -48,5 +48,10 @@ If this needs to be corrected, configure the policy value for Computer
 Configuration >> Administrative Templates >> Windows Components >> Windows
 Installer >> \"Prevent Internet Explorer security prompt for Windows Installer
 scripts\" to \"Not Configured\" or \"Disabled\"."
+
+describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer') do
+  its('SafeForScripting') { should eq 0 }
+end
+
 end
 

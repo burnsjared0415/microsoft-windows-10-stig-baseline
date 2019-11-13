@@ -35,5 +35,10 @@ Value: 0"
   tag fix: "Configure the policy value for Computer Configuration >>
 Administrative Templates >> Windows Components >> Windows Remote Management
 (WinRM) >> WinRM Service >> \"Allow Basic authentication\" to \"Disabled\"."
+
+describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Service') do
+  its('AllowBasic') { should eq 0 }
+end
+
 end
 

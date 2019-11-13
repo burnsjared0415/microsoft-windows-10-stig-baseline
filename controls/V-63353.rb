@@ -31,5 +31,10 @@ assigned a drive letter, this is a finding.
 This does not apply to system partitions such the Recovery and EFI System
 Partition."
   tag fix: "Format all local volumes to use NTFS."
+
+describe filesystem('c:') do
+  its('type') { should cmp 'NTFS' }
+end
+
 end
 
