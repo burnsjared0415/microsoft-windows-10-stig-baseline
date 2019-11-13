@@ -35,5 +35,10 @@ Value: 0"
   tag fix: "Configure the policy value for Computer Configuration >>
 Administrative Templates >> Windows Components >> Windows Installer >> \"Allow
 user control over installs\" to \"Disabled\"."
+
+describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer') do
+  its('EnableUserControl') { should eq 0 }
+end
+
 end
 
