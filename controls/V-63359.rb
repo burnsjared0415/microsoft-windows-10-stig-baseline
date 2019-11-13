@@ -57,5 +57,18 @@ documented with the ISSO."
   tag fix: "Regularly review local accounts and verify their necessity.
 Disable or delete any active accounts that have not been used in the last 35
 days."
+
+#userList = users.where { uid !~ /S\-1\-5\-21\-\d+\-\d+\-\d+\-50[0-3]/ }
+#PR submitted to return the last logon property via users.
+#https://github.com/inspec/inspec/issues/4723
+
+script = <<-EOH
+Get-LocalUser | Where-Object {$_.LastLogon -lt ((get-date).addDays(-35)) -AND $_.Enabled -eq $true}
+EOH
+
+  describe powershell(script) do
+    its('stdout'){should eq ''}
+  end
+
 end
 
