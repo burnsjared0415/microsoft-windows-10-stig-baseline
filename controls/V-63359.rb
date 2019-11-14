@@ -63,11 +63,11 @@ days."
 #https://github.com/inspec/inspec/issues/4723
 
 script = <<-EOH
-Get-LocalUser | Where-Object {$_.LastLogon -lt ((get-date).addDays(-35)) -AND $_.Enabled -eq $true}
+Get-LocalUser | Where-Object {$_.LastLogon -lt ((get-date).addDays(-35)) -AND $_.Enabled -eq $true} | ConvertTo-Json
 EOH
 
-  describe powershell(script) do
-    its('stdout'){should eq ''}
+  describe json(command: script) do
+    it{should be_empty}
   end
 
 end
