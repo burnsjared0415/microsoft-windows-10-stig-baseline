@@ -49,5 +49,9 @@ Administrative Templates >> Windows Components >> Data Collection and Preview
 Builds >> \"Limit Enhanced diagnostic data to the minimum required by Windows
 Analytics\" to \"Enabled\" with \"Enable Windows Analytics collection\"
 selected in \"Options:\"."
+  describe registry_key('\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection') do
+   its('LimitEnhancedDiagnosticDataWindowsAnalytics') {should eq 0x00000001}
+  end
+  
 end
 
