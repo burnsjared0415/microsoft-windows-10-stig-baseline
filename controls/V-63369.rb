@@ -33,7 +33,7 @@ Value: 0"
   tag fix: "Configure the policy value for Computer Configuration >>
 Administrative Templates >> Windows Components >> Windows Remote Management
 (WinRM) >> WinRM Service >> \"Allow unencrypted traffic\" to \"Disabled\"."
-describe registry_key('\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service') do
+describe registry_key('\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service') do
     its('AllowUnencryptedTraffic') {should eq 0}
 end
 
