@@ -54,5 +54,9 @@ copied to the \\Windows\\PolicyDefinitions and
 \\Windows\\PolicyDefinitions\\en-US directories respectively.
 
 The system must be restarted for the changes to take effect. "
+  describe registry_key('\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb10') do
+    its('Start') {should eq 0x00000004}
+end
+  
 end
 
