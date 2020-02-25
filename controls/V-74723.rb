@@ -53,5 +53,9 @@ copied to the \\Windows\\PolicyDefinitions and
 \\Windows\\PolicyDefinitions\\en-US directories respectively.
 
 The system must be restarted for the change to take effect."
+  describe registry_key('\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\') do
+    its('SMB1') {should eq 0x00000000}
+end
+  
 end
 
