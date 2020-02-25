@@ -38,5 +38,8 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 \"Network security: Minimum session security for NTLM SSP based (including
 secure RPC) servers\" to \"Require NTLMv2 session security\" and \"Require
 128-bit encryption\" (all options selected)."
+  describe registry_key('\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0') do
+    its('NTLMMinServerSec') {should eq 0x20080000}
 end
 
+end
