@@ -54,7 +54,8 @@ copied to the \\Windows\\PolicyDefinitions and
 
 The system must be restarted for the change to take effect."
   describe registry_key('\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\') do
-    its('SMB1') {should eq 0x00000000}
+    it { should have_property 'SMB1' }
+    its('SMB1') {should cmp == 0x00000000}
 end
   
 end
