@@ -38,9 +38,10 @@ Settings >> Security Settings >> Local Policies >> Security Options >> \"Domain
 member: Digitally encrypt or sign secure channel data (always)\" to
 \"Enabled\"."
 
-  describe registry_key('HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters') do
-    its('RequireSignOrSeal') { should eq 1 }
-  end
+  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters') do
+    it { should have_property 'RequireSignOrSeal' }
+    its('RequireSignOrSeal') { should cmp == 1 }
+end
 
 end
 
