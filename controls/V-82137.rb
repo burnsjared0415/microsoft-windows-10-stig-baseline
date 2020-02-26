@@ -42,8 +42,9 @@ Group policy files for OneDrive are located on a system with OneDrive in
 
 Copy the OneDrive.admx and .adml files to the \\Windows\\PolicyDefinitions and
 \\Windows\\PolicyDefinitions\\en-US directories respectively."
-  describe registry_key('\HKEY_CURRENT_USER\Software\Policies\Microsoft\OneDrive') do
-    its('DisablePersonalSync') {should eq 0x00000001}
+  describe registry_key('HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\OneDrive') do
+    it { should have_property 'DisablePersonalSync' }
+    its('DisablePersonalSync') {should cmp == 0x00000001}
 end
 
 end
