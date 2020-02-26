@@ -40,5 +40,9 @@ Value: 0x00000000 (0)"
 Administrative Templates >> Windows Components >> Windows Game Recording and
 Broadcasting >> \"Enables or disables Windows Game Recording and Broadcasting\"
 to \"Disabled\"."
+  describe registry_key('\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR') do
+    its('AllowGameDVR') {should eq 0x00000000}
+end
+  
 end
 
