@@ -41,5 +41,9 @@ Value: 0x00000000 (0)"
   tag fix: "Configure the policy value for Computer Configuration >>
 Administrative Templates >> Windows Components >> Microsoft Edge >> \"Allow
 clearing browsing data on exit\" to \"Disabled\"."
+  describe registry_key('\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Privacy') do
+    its('ClearBrowsingHistoryOnExit') {should eq 0x00000000}
+end
+  
 end
 
