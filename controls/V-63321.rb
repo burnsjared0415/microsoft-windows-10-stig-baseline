@@ -36,8 +36,9 @@ Value: 0"
 Administrative Templates >> Windows Components >> Windows Installer >> \"Allow
 user control over installs\" to \"Disabled\"."
 
-describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer') do
-  its('EnableUserControl') { should eq 0 }
+describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer') do
+  it { should have_property 'EnableUserControl' }
+  its('EnableUserControl') { should cmp == 0 }
 end
 
 end
