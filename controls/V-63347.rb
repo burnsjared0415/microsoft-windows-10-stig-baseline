@@ -36,8 +36,9 @@ Value: 0"
 Administrative Templates >> Windows Components >> Windows Remote Management
 (WinRM) >> WinRM Service >> \"Allow Basic authentication\" to \"Disabled\"."
 
-describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Service') do
-  its('AllowBasic') { should eq 0 }
+describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service') do
+  it { should have_property 'AllowBasic' }
+  its('AllowBasic') { should cmp == 0 }
 end
 
 end
