@@ -59,5 +59,20 @@ For domain-joined workstations, the Domain Admins group must be replaced by a
 domain workstation administrator group.
 
 Remove any standard user accounts."
+  
+  administrators = attribute('administrators')
+  administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
+  administrator_group.each do |user|
+    describe user.to_s do
+      it { should be_in administrators }
+    end
+  end
+  if administrator_group.empty?
+    impact 0.0
+    describe 'There are no users with administrative privileges' do
+      skip 'This control is not applicable'
+    end
+  end
+
 end
 
