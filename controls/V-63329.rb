@@ -49,8 +49,9 @@ Configuration >> Administrative Templates >> Windows Components >> Windows
 Installer >> \"Prevent Internet Explorer security prompt for Windows Installer
 scripts\" to \"Not Configured\" or \"Disabled\"."
 
-describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer') do
-  its('SafeForScripting') { should eq 0 }
+describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer') do
+  it { should have_property 'SafeForScripting' }
+  its('SafeForScripting') { should cmp == 0 }
 end
 
 end
