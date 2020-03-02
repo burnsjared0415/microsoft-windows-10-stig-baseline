@@ -40,5 +40,14 @@ All of the built-in accounts may not exist on a system, depending on the
 Windows 10 version."
   tag fix: "Limit local user accounts on domain-joined systems.  Remove any
 unauthorized local accounts."
+  describe security_policy do
+    its('EnableAdministrator') { should cmp 0 }
+  end
+  describe security_policy do
+    its('EnableGuestAccount') { should cmp 0 }
+  end
+  describe security_policy do
+    its('EnableDefaultAccount') { should cmp 0 }
+  end
 end
 
