@@ -48,10 +48,10 @@ Configuration >> System Audit Policies >> Detailed Tracking >> \"Audit PNP
 Activity\" with \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its('Audit PNP Activity') { should eq 'Success' }
+      its('PNP Activity') { should eq 'Success' }
     end
     describe audit_policy do
-      its('Audit PNP Activity') { should eq 'Success and Failure' }
+      its('PNP Activity') { should eq 'Success and Failure' }
     end
   end
 end
