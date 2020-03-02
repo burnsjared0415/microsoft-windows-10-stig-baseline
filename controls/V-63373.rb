@@ -140,22 +140,19 @@ users\" to \"Disabled\" (WN10-SO-000160)."
     it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
     it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
     it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('append-data', by_user:  'BUILTIN\\Users') } 
   end
     describe file("c:\\program files") do
     it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
     it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
     it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
     it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('append-data', by_user:  'BUILTIN\\Users') }
    end 
     describe file("c:\\windows") do
     it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
     it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
     it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
     it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('append-data', by_user:  'BUILTIN\\Users') } 
-  end
+   end
  
 end
 
