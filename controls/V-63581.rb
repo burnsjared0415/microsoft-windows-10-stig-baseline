@@ -49,5 +49,10 @@ If this needs to be corrected, configure the policy value for Computer
 Configuration >> Administrative Templates >> Network >> Windows Connection
 Manager >> \"Minimize the number of simultaneous connections to the Internet or
 a Windows Domain\" to \"Enabled\"."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WcmSvc\\GroupPolicy') do
+    it { should have_property 'fMinimizeConnections' }
+   its('fMinimizeConnections') { should cmp == 1 }
+  end
+  
 end
 
