@@ -44,5 +44,17 @@ installed HBSS or if the HBSS software is not properly configured, maintained,
 or used, this is a finding."
   tag fix: "Install DoD approved HBSS software and ensure it is operating
 continuously."
+  describe "A manual review is required to ensure the operating system employs automated mechanisms to determine the
+  state of system components with regard to flaw remediation using the following
+  frequency: continuously, where HBSS is used; 30 days, for any additional
+  internal network scans not covered by HBSS; and annually, for external scans by
+  Computer Network Defense Service Provider (CNDSP)." do
+    skip 'A manual review is required to ensure the operating system employs automated mechanisms to determine the
+  state of system components with regard to flaw remediation using the following
+  frequency: continuously, where HBSS is used; 30 days, for any additional
+  internal network scans not covered by HBSS; and annually, for external scans by
+  Computer Network Defense Service Provider (CNDSP).'
+  end
+  
 end
 
