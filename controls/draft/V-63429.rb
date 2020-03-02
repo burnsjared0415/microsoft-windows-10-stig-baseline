@@ -33,5 +33,10 @@ If the value for \"Store password using reversible encryption\" is not set to
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Account Policies >> Password Policy >> \"Store
 passwords using reversible encryption\" to \"Disabled\"."
+  
+  describe security_policy do
+    its('StorePasswordUsingReversibleEncryption') { should be eq 0 }
+  end
+  
 end
 
