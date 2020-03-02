@@ -54,5 +54,38 @@ the share and NTFS permissions to limit access to the specific groups or
 accounts that require it.
 
 Remove any unnecessary non-system created shares."
+  share_names = []
+  share_paths = []
+  get = command('Get-WMIObject -Query "SELECT * FROM Win32_Share" | Findstr /V "Name --"').stdout.strip.split("\n")
+
+  get.each do |share|
+    loc_space = share.index(' ')
+
+    names = share[0..loc_space-1]
+
+    share_names.push(names)
+    path = share[9..50]
+    share_paths.push(path)
+  end
+
+  share_names_string = share_names.join(',')
+
+  if share_names_string != 'ADMIN$,C$,IPC$'
+
+    [share_paths, share_names].each do |path1, _name1|
+
+      describe command("Get-Acl -Path '#{path1}' | Format-List | Findstr /i /C:'Everyone Allow'") do
+        its('stdout') { should eq '' }
+      end
+    end
+  end
+
+  if share_names_string == 'ADMIN$,C$,IPC$'
+    impact 0.0
+    describe 'The default files shares exist' do
+      skip 'This control is NA'
+    end
+  end
+  
 end
 
