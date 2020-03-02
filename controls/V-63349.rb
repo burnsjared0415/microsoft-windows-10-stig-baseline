@@ -71,5 +71,16 @@ may be at the following versions:
 v1507 (Build 10240)
 v1607 (Build 14393)
 v1809 (Build 17763)"
+  
+  
+  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion') do
+    it { should have_property 'CurrentVersion' }
+    its('CurrentVersion') { should cmp >= '6.3' }
+  end
+  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion') do
+    it { should have_property 'CurrentBuildNumber' }
+    its('ReleaseId') { should cmp >= '1703' }
+  end
+  
 end
 
