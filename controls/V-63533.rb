@@ -55,5 +55,16 @@ The default location is the \"%SystemRoot%\\SYSTEM32\\WINEVT\\LOGS\" directory.
 
 If the location of the logs has been changed, when adding Eventlog to the
 permissions, it must be entered as \"NT Service\\Eventlog\"."
+  get_system_root = command('Get-ChildItem Env: | Findstr SystemRoot').stdout.strip
+  system_root = get_system_root[11..get_system_root.length]
+
+  systemroot = system_root.strip
+
+  describe windows_registry("#{systemroot}\\SYSTEM32\\WINEVT\\LOGS\\Security.evtx") do
+    it { should be_allowed('full-control', by_user: 'NT SERVICE\\EventLog') }
+    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+  end
+  
 end
 
