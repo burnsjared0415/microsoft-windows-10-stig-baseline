@@ -37,5 +37,9 @@ If the site is using a password filter that requires this setting be set to
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Account Policies >> Password Policy >>
 \"Password must meet complexity requirements\" to \"Enabled\"."
+  describe security_policy do
+    its('PasswordComplexity') { should eq 1 }
+  end
+  
 end
 
