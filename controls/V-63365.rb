@@ -53,5 +53,19 @@ the \"Hyper-V Administrators\" group.
 
 For hosted hypervisors other than Hyper-V, restrict access to create or run
 virtual machines to authorized user accounts only."
+  
+  hyper_v_administrator = attribute('hyper_v_admin')
+  hyper_v_administrator_group = command("net localgroup Hyper-V Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
+  hyper_v_administrator_group.each do |user|
+    describe user.to_s do
+      it { should be_in hyper_v_admin }
+    end
+  end
+  if hyper_v_administrator_group.empty?
+    impact 0.0
+    describe 'There are no users with administrative privileges' do
+      skip 'This control is not applicable'
+    end
+  end
 end
 
