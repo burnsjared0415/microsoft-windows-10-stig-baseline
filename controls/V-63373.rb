@@ -134,5 +134,28 @@ Successfully processed 1 files; Failed processing 0 files"
   tag fix: "Maintain the default file system permissions and configure the
 Security Option: \"Network access: Let everyone permissions apply to anonymous
 users\" to \"Disabled\" (WN10-SO-000160)."
+  
+  describe file("c:\\") do
+    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('append-data', by_user:  'BUILTIN\\Users') } 
+  end
+    describe file("c:\\program files") do
+    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('append-data', by_user:  'BUILTIN\\Users') }
+   end 
+    describe file("c:\\windows") do
+    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('append-data', by_user:  'BUILTIN\\Users') } 
+  end
+ 
 end
 
