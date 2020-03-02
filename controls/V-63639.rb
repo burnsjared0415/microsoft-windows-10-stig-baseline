@@ -41,7 +41,7 @@ member: Digitally encrypt or sign secure channel data (always)\" to
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters') do
     it { should have_property 'RequireSignOrSeal' }
     its('RequireSignOrSeal') { should cmp == 1 }
-end
+  end
 
 end
 
