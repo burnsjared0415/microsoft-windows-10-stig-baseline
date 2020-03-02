@@ -32,5 +32,10 @@ If the drop-down list box \"Default operating system:\" shows any operating
 system other than Windows 10, this is a finding."
   tag fix: "Ensure Windows 10 is the only operating system on a device.  Remove
 alternate operating systems."
+  
+  describe command("bcdedit | Findstr description | Findstr /v /c:'Windows Boot Manager'") do
+    its('stdout') { should eq "description             Windows 10\r\n" }
+  end
+  only_if { os['ProductName'].to_i < Windows 10 }
 end
 
