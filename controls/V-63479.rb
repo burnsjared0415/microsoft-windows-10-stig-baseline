@@ -46,5 +46,13 @@ Policy Change >> Audit Policy Change - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Policy Change >> \"Audit Audit Policy Change\" with
 \"Success\" selected."
+  describe.one do
+    describe audit_policy do
+      its('Audit Policy Change') { should eq 'Success' }
+    end
+    describe audit_policy do
+      its('Audit Policy Change') { should eq 'Success and Failure' }
+    end
+  end
 end
 
