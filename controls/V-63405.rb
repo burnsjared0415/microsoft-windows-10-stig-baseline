@@ -41,5 +41,14 @@ Settings >> Security Settings >> Account Policies >> Account Lockout Policy >>
 
 A value of \"0\" is also acceptable, requiring an administrator to unlock the
 account."
+  describe.one do
+    describe security_policy do
+      its('LockoutDuration') { should be >= 15 }
+    end
+    describe security_policy do
+      its('LockoutDuration') { should cmp == 0 }
+    end
+  end
+  
 end
 
