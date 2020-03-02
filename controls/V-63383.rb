@@ -35,5 +35,7 @@ Select \"Turn Windows Features on or off\".
 De-select \"Simple TCPIP Services (i.e. echo, daytime etc)\"."
   describe service('Simple TCP/IP Services') do
   it { should_not be_installed }
+  end
+  
 end
 
