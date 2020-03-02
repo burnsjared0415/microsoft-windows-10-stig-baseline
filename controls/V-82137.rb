@@ -44,8 +44,8 @@ Copy the OneDrive.admx and .adml files to the \\Windows\\PolicyDefinitions and
 \\Windows\\PolicyDefinitions\\en-US directories respectively."
   describe registry_key('HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\OneDrive') do
     it { should have_property 'DisablePersonalSync' }
-    its('DisablePersonalSync') { should cmp == 0x00000001 }
-end
+    its('DisablePersonalSync') { should cmp == 1 }
+  end
 
 end
 
