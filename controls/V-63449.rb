@@ -49,5 +49,13 @@ Account Management >> User Account Management - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Account Management >> \"Audit User Account Management\" with
 \"Success\" selected."
+  describe.one do
+    describe audit_policy do
+      its('User Account Management') { should eq 'Success' }
+    end
+    describe audit_policy do
+      its('User Account Management') { should eq 'Success and Failure' }
+    end
+  end
 end
 
