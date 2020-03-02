@@ -48,5 +48,13 @@ Privilege Use >> Sensitive Privilege Use - Failure"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Privilege Use >> \"Audit Sensitive Privilege Use\" with
 \"Failure\" selected."
+  describe.one do
+    describe audit_policy do
+      its('Sensitive Privilege Use') { should eq 'Failure' }
+    end
+    describe audit_policy do
+      its('Sensitive Privilege Use') { should eq 'Success and Failure' }
+    end
+  end
 end
 
