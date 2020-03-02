@@ -47,5 +47,14 @@ System >> System Integrity - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> System >> \"Audit System Integrity\" with \"Success\"
 selected."
+  describe.one do
+    describe audit_policy do
+      its('System Integrity') { should eq 'Success' }
+    end
+    describe audit_policy do
+      its('System Integrity') { should eq 'Success and Failure' }
+    end
+  end
+  
 end
 
