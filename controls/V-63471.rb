@@ -53,5 +53,14 @@ actual removable storage connected to the VM."
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Object Access >> \"Audit Removable Storage\" with \"Failure\"
 selected."
+  describe.one do
+    describe audit_policy do
+      its('Removable Storage') { should eq 'Failure' }
+    end
+    describe audit_policy do
+      its('Removable Storage') { should eq 'Success and Failure' }
+    end
+  end
+  
 end
 
