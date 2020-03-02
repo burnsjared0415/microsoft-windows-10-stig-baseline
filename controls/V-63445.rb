@@ -49,5 +49,15 @@ Account Management >> Security Group Management - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Account Management >> \"Audit Security Group Management\"
 with \"Success\" selected."
+  
+  describe.one do
+    describe audit_policy do
+      its('Security Group Management') { should eq 'Success' }
+    end
+    describe audit_policy do
+      its('Security Group Management') { should eq 'Success and Failure' }
+    end
+  end
+  
 end
 
