@@ -36,5 +36,9 @@ minutes, this is a finding."
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Account Policies >> Account Lockout Policy >>
 \"Reset account lockout counter after\" to \"15\" minutes."
+  describe security_policy do
+    its('ResetLockoutCount') { should be >= 15 }
+  end
+  
 end
 
