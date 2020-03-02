@@ -94,5 +94,32 @@ ECA Root CA 4
 
 The InstallRoot tool is available on IASE at
 http://iase.disa.mil/pki-pke/Pages/tools.aspx."
+   describe.one do
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates\\C313F919A6ED4E0E8451AFA930FB419A20F181E4') do
+      it { should exist }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates\\73E8BB08E337D6A5A6AEF90CFFDD97D9176CB582') do
+      it { should exist }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\C313F919A6ED4E0E8451AFA930FB419A20F181E4') do
+      it { should exist }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\73E8BB08E337D6A5A6AEF90CFFDD97D9176CB582') do
+      it { should exist }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates\\C313F919A6ED4E0E8451AFA930FB419A20F181E4') do
+      it { should exist }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates\\73E8BB08E337D6A5A6AEF90CFFDD97D9176CB582') do
+      it { should exist }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\C313F919A6ED4E0E8451AFA930FB419A20F181E4') do
+      it { should exist }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\73E8BB08E337D6A5A6AEF90CFFDD97D9176CB582') do
+      it { should exist }
+    end
+  end
+  
 end
 
