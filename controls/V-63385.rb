@@ -33,5 +33,9 @@ Run \"Programs and Features\".
 Select \"Turn Windows Features on or off\".
 
 De-select \"Telnet Client\"."
+  describe service('Telnet Client') do
+  it { should_not be_installed }
+  end
+  
 end
 
