@@ -75,5 +75,11 @@ Implementation guidance for AppLocker is available in the NSA paper
 \"Application Whitelisting using Microsoft AppLocker\" at the following link:
 
 https://www.iad.gov/iad/library/ia-guidance/tech-briefs/application-whitelisting-using-microsoft-applocker.cfm"
+  describe "A manual review is required to ensure the operating system employs a deny-all, permit-by-exception
+  policy to allow the execution of authorized software programs" do
+    skip 'A manual review is required to ensure the operating system employs a deny-all, permit-by-exception
+  policy to allow the execution of authorized software programs'
+  end
+  
 end
 
