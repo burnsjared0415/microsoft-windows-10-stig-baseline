@@ -38,5 +38,19 @@ If the group contains any standard user accounts used for performing normal
 user tasks, this is a finding."
   tag fix: "Create separate accounts for backup operations for users with this
 privilege."
+  
+  backup_operators = attribute('backup_operators')
+  backup_operators_group = command("net localgroup Backup Operators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
+  backup_operators_group.each do |user|
+    describe user.to_s do
+      it { should be_in backup_operators }
+    end
+  end
+  if backup_operators_group.empty?
+    impact 0.0
+    describe 'There are no users with administrative privileges' do
+      skip 'This control is not applicable'
+    end
+  end
 end
 
