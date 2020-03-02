@@ -31,5 +31,10 @@ Run \"Computer Management\".
 Navigate to System Tools >> Local Users and Groups >> Users.
 Double click each active account.
 Ensure \"Password never expires\" is not checked on all active accounts."
+  describe command("Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordExpires=False
+  and LocalAccount=True and Disabled=False' | FT Name | Findstr /V 'Name --'") do
+    its('stdout') { should eq '' }
+  end
+  
 end
 
