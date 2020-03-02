@@ -47,5 +47,14 @@ Account Management >> Other Account Management Events - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Account Management >> \"Audit Other Account Management
 Events\" with \"Success\" selected."
+  describe.one do
+    describe audit_policy do
+      its('Other Account Management Events') { should eq 'Success' }
+    end
+    describe audit_policy do
+      its('Other Account Management Events') { should eq 'Success and Failure' }
+    end
+  end
+  
 end
 
