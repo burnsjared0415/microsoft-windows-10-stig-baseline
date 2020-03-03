@@ -41,6 +41,5 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
       its('Administrator account status') { should eq 'Enabled and Disabled' }
     end
   end
-  
 end
 
