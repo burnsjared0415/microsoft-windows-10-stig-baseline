@@ -17,3 +17,8 @@ attributes:
     type: array
     description: 'List of authorized users in the local Administrators group'
     default: []
+
+  - name: hyper_v_admin
+    type: array
+    description: 'List of authorized users in the local Hyper-V group'
+    default: []
