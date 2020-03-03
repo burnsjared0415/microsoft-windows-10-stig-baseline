@@ -38,5 +38,4 @@ to \"Enabled\"."
     it { should have_property 'DisableRunAs' }
    its('DisableRunAs') { should cmp == 1 }
   end
-
 end
