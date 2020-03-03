@@ -39,7 +39,6 @@ Settings >> Security Settings >> Account Policies >> Password Policy >>
 \"Password must meet complexity requirements\" to \"Enabled\"."
   describe security_policy do
     its('PasswordComplexity') { should eq 1 }
-  end
-  
+  end 
 end
 
