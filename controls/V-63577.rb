@@ -53,6 +53,9 @@ Value: RequireMutualAuthentication=1, RequireIntegrity=1
 
 Value Name: \\\\*\\NETLOGON
 Value: RequireMutualAuthentication=1, RequireIntegrity=1"
+  is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
+  
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths') do
     it { should have_property '\\\\*\\SYSVOL' }
     its('\\\\*\\SYSVOL') { should cmp 'RequireMutualAuthentication=1' }
@@ -68,7 +71,13 @@ Value: RequireMutualAuthentication=1, RequireIntegrity=1"
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths') do
     it { should have_property '\\\\*\\NETLOGON' }
     its('\\\\*\\NETLOGON') { should cmp 'RequireIntegrity=1' }
+  end if is_domain != 'WORKGROUP'
+
+  if is_domain == 'WORKGROUP'
+    impact 0.0
+    describe 'The system is not a member of a domain, control is NA' do
+    skip 'The system is not a member of a domain, control is NA'
+    end
   end
-  
 end
 
