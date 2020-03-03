@@ -39,6 +39,5 @@ selection UI\" to \"Enabled\"."
     it { should have_property 'DontDisplayNetworkSelectionUI' }
     its('DontDisplayNetworkSelectionUI') { should cmp == 1 }
   end
-  
 end
 
