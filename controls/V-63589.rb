@@ -107,6 +107,5 @@ describe.one do
       it { should_not exist }
     end
   end
-
 end
 
