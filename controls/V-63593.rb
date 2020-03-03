@@ -124,6 +124,5 @@ S-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4
     it { should be_allowed('full-control', by_user: 'BUILTIN\\CREATOR OWNER') }
     it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
     end
-  
 end
 
