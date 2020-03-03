@@ -45,7 +45,6 @@ MSS-Legacy.adml\" must be copied to the \\Windows\\PolicyDefinitions and
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
     it { should have_property 'EnableICMPRedirect' }
     its('EnableICMPRedirect') { should cmp == 0 }
-  end
-  
+  end 
 end
 
