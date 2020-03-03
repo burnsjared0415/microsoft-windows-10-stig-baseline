@@ -54,7 +54,6 @@ Audit Policies >> Account Logon >> \"Audit Credential Validation\" with
     describe audit_policy do
       its('Credential Validation') { should eq 'Success and Failure' }
     end
-  end
-  
+  end 
 end
 
