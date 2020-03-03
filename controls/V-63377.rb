@@ -39,7 +39,6 @@ from the IIS STIG must be addressed."
 Information Services Hostable Web Core\" from the system."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\InetStp') do
   it { should_not have_property 'InstallPath' }
-end
-  
+  end 
 end
 
