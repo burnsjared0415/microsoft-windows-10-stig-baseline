@@ -38,7 +38,6 @@ Settings >> Security Settings >> Account Policies >> Account Lockout Policy >>
 \"Reset account lockout counter after\" to \"15\" minutes."
   describe security_policy do
     its('ResetLockoutCount') { should be >= 15 }
-  end
-  
+  end 
 end
 
