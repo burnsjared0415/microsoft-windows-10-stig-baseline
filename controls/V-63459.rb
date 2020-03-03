@@ -54,7 +54,6 @@ Audit Policies >> Logon/Logoff >> \"Audit Logoff\" with \"Success\" selected."
     describe audit_policy do
       its('Logoff') { should eq 'Success and Failure' }
     end
-  end
-  
+  end  
 end
 
