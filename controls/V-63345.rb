@@ -79,7 +79,6 @@ https://www.iad.gov/iad/library/ia-guidance/tech-briefs/application-whitelisting
   policy to allow the execution of authorized software programs" do
     skip 'A manual review is required to ensure the operating system employs a deny-all, permit-by-exception
   policy to allow the execution of authorized software programs'
-  end
-  
+  end 
 end
 
