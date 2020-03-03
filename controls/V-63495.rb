@@ -53,7 +53,6 @@ Audit Policies >> System >> \"Audit IPSec Driver\" with \"Success\" selected."
     describe audit_policy do
       its('IPSec Driver') { should eq 'Success and Failure' }
     end
-  end
-  
+  end  
 end
 
