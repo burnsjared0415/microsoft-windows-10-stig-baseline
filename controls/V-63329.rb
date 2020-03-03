@@ -48,11 +48,18 @@ If this needs to be corrected, configure the policy value for Computer
 Configuration >> Administrative Templates >> Windows Components >> Windows
 Installer >> \"Prevent Internet Explorer security prompt for Windows Installer
 scripts\" to \"Not Configured\" or \"Disabled\"."
-
+is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
 describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer') do
   it { should have_property 'SafeForScripting' }
   its('SafeForScripting') { should cmp == 0 }
-end
+end if is_domain != 'WORKGROUP'
+
+  if is_domain == 'WORKGROUP'
+    impact 0.0
+    describe 'The system is not a member of a domain, control is NA' do
+      skip 'The system is not a member of a domain, control is NA'
+    end
+  end
 
 end
 
