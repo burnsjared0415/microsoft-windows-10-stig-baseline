@@ -96,5 +96,10 @@ A Microsoft TechNet article on Credential Guard, including system requirement
 details, can be found at the following link:
 
 https://docs.microsoft.com/en-us/windows/access-protection/credential-guard/credential-guard"
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard') do
+    it { should have_property 'LsaCfgFlags' }
+    its('LsaCfgFlags') { should cmp == 1 }
+  end
+  
 end
 
