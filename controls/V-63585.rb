@@ -41,6 +41,5 @@ network\" to \"Enabled\"."
     it { should have_property 'fBlockNonDomain' }
    its('fBlockNonDomain') { should cmp == 1 }
   end
-  
 end
 
