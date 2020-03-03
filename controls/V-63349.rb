@@ -81,6 +81,5 @@ v1809 (Build 17763)"
     it { should have_property 'CurrentBuildNumber' }
     its('ReleaseId') { should cmp >= '1703' }
   end
-  
 end
 
