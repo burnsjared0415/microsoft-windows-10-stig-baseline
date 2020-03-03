@@ -72,7 +72,6 @@ Policy\" to \"Not Configured\" or \"Enabled\" with any option other than
    describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch') do
     it { should_not have_property 'DriverLoadPolicy' }
    end
-  
 end
 
  
