@@ -57,6 +57,5 @@ Audit Policies >> Account Management >> \"Audit User Account Management\" with
       its('User Account Management') { should eq 'Success and Failure' }
     end
   end
-
 end
 
