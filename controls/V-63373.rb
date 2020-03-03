@@ -153,6 +153,5 @@ users\" to \"Disabled\" (WN10-SO-000160)."
     it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
     it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
    end
- 
 end
 
