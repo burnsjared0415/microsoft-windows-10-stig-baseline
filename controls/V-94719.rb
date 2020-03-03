@@ -56,5 +56,13 @@ The requirement is NA if the policy value for Computer Configuration >>
 Administrative Templates >> Windows Components >> App Privacy >> \"Let Windows
 apps activate with voice\" is configured to \"Enabled\" with “Default for all
 Apps:” set to “Force Deny”."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy') do
+    it { should have_property 'LetAppsActivateWithVoiceAboveLock' }
+    its('LetAppsActivateWithVoiceAboveLock') { should cmp == 2 }
+  end
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy') do
+    it { should have_property 'LetAppsActivateWithVoice' }
+    its('LetAppsActivateWithVoice') { should cmp == 2 }
+  end
 end
 
