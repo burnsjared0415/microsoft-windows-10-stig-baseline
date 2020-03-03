@@ -73,6 +73,5 @@ Remove any standard user accounts."
       skip 'This control is not applicable'
     end
   end
-
 end
 
