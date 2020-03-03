@@ -55,6 +55,5 @@ selected."
       its('System Integrity') { should eq 'Success and Failure' }
     end
   end
-  
 end
 
