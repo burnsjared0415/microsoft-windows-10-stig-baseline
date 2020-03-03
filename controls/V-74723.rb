@@ -57,6 +57,5 @@ The system must be restarted for the change to take effect."
     it { should have_property 'SMB1' }
     its('SMB1') { should cmp == 0 }
   end
-  
 end
 
