@@ -54,7 +54,6 @@ Audit Policies >> Detailed Tracking >> \"Audit Process Creation\" with
     describe audit_policy do
       its('Process Creation') { should eq 'Success and Failure' }
     end
-  end
-  
+  end  
 end
 
