@@ -44,7 +44,7 @@ Value: 0x00000001 (1)"
   tag fix: "Configure the policy value for Computer Configuration >>
 Administrative Templates >> Windows Components >> Microsoft Edge >> \"Prevent
 certificate error overrides\" to \"Enabled\"."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge\\Internet') do
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge\\Internet Settings') do
     it {should have_property 'PreventCertErrorOverrides' }
     its('PreventCertErrorOverrides') { should cmp == 1 }
   end
