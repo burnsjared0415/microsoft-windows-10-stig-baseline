@@ -57,7 +57,6 @@ with \"Success\" selected."
     describe audit_policy do
       its('Security Group Management') { should eq 'Success and Failure' }
     end
-  end
-  
+  end  
 end
 
