@@ -55,5 +55,12 @@ the policy value for Computer Configuration >> Administrative Templates >>
 System >> Early Launch Antimalware >> \"Boot-Start Driver Initialization
 Policy\" to \"Not Configured\" or \"Enabled\" with any option other than
 \"All\" selected."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch') do
+    it { should have_property 'DriverLoadPolicy' }
+    its('DriverLoadPolicy') { should cmp == 1 }
+    its('DriverLoadPolicy') { should cmp == 3 }
+    its('DriverLoadPolicy') { should cmp == 8 }
+  end
+  
 end
 
