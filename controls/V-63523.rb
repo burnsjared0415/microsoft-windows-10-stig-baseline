@@ -46,7 +46,6 @@ documented with the ISSO."
    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security') do
     it { should have_property 'MaxSize' }
     its('MaxSize') { should cmp >= 1024000 }
-   end
-  
+   end  
 end
 
