@@ -44,6 +44,5 @@ to \"Disabled\"."
     it { should have_property 'AllowGameDVR' }
     its('AllowGameDVR') { should cmp == 0 }
   end
-  
 end
 
