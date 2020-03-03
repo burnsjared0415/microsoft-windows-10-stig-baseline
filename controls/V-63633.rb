@@ -48,8 +48,9 @@ computers\" to \"Disabled\"."
   end is_domain == 'WORKGROUP'
     impact 0.0
     describe 'The system is not a member of a domain, control is NA' do
-      skip 'The system is not a member of a domain, control is NA'
+     skip 'The system is not a member of a domain, control is NA'
    end
   end
+ end
 end
 
