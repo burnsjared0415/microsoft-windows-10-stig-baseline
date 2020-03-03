@@ -45,6 +45,5 @@ clearing browsing data on exit\" to \"Disabled\"."
     it { should have_property 'ClearBrowsingHistoryOnExit' }
     its('ClearBrowsingHistoryOnExit') { should cmp == 0 }
   end
-  
 end
 
