@@ -37,5 +37,4 @@ Administrative Templates >> Windows Components >> Windows Remote Management
     it { should have_property 'AllowUnencryptedTraffic' }
    its('AllowUnencryptedTraffic') { should cmp == 0 }
   end
-
 end
