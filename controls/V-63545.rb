@@ -42,7 +42,6 @@ camera\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization') do
   it { should have_property 'NoLockScreenCamera' }
   its('NoLockScreenCamera') { should cmp == 1 }
- end
-  
+ end  
 end
 
