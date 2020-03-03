@@ -54,7 +54,6 @@ continuously."
   frequency: continuously, where HBSS is used; 30 days, for any additional
   internal network scans not covered by HBSS; and annually, for external scans by
   Computer Network Defense Service Provider (CNDSP).'
-  end
-  
+  end 
 end
 
