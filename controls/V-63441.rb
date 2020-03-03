@@ -54,7 +54,6 @@ Events\" with \"Success\" selected."
     describe audit_policy do
       its('Other Account Management Events') { should eq 'Success and Failure' }
     end
-  end
-  
+  end  
 end
 
