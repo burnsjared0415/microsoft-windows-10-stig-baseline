@@ -58,6 +58,5 @@ The system must be restarted for the changes to take effect. "
     it { should have_property 'Start' }
     its('Start') { should cmp == 4 }
   end
-  
 end
 
