@@ -42,6 +42,5 @@ member: Digitally encrypt or sign secure channel data (always)\" to
     it { should have_property 'RequireSignOrSeal' }
     its('RequireSignOrSeal') { should cmp == 1 }
   end
-
 end
 
