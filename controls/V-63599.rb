@@ -100,6 +100,5 @@ https://docs.microsoft.com/en-us/windows/access-protection/credential-guard/cred
     it { should have_property 'LsaCfgFlags' }
     its('LsaCfgFlags') { should cmp == 1 }
   end
-  
 end
 
