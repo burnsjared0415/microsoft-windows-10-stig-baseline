@@ -50,17 +50,17 @@ Configuration >> Administrative Templates >> Network >> Windows Connection
 Manager >> \"Minimize the number of simultaneous connections to the Internet or
 a Windows Domain\" to \"Enabled\"."
   is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WcmSvc\\GroupPolicy') do
-    it { should have_property 'fMinimizeConnections' }
+   it { should have_property 'fMinimizeConnections' }
    its('fMinimizeConnections') { should cmp == 1 }
   end if is_domain != 'WORKGROUP'
 
   if is_domain == 'WORKGROUP'
     impact 0.0
     describe 'The system is not a member of a domain, control is NA' do
-      skip 'The system is not a member of a domain, control is NA'
+    skip 'The system is not a member of a domain, control is NA'
     end
   end
-  
 end
 
