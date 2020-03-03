@@ -54,7 +54,6 @@ Audit Policies >> System >> \"Audit Security System Extension\" with
     describe audit_policy do
       its('Security System Extension') { should eq 'Success and Failure' }
     end
-  end
-  
+  end  
 end
 
