@@ -52,7 +52,6 @@ selected in \"Options:\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection') do
     it { should have_property 'LimitEnhancedDiagnosticDataWindowsAnalytics' }
    its('LimitEnhancedDiagnosticDataWindowsAnalytics') { should cmp == 1 }
-  end
-  
+  end 
 end
 
