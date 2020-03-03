@@ -40,7 +40,6 @@ for .p12 certificate files (e.g., Oracle Wallet Manager) or Adobe PreFlight
 certificate files."
   describe command('where /R c: *.p12 *.pfx') do
     its('stdout') { should eq '' }
-  end
-  
+  end  
 end
 
