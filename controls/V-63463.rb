@@ -53,7 +53,6 @@ Audit Policies >> Logon/Logoff >> \"Audit Logon\" with \"Failure\" selected."
     describe audit_policy do
       its('Logon') { should eq 'Success and Failure' }
     end
-  end
-  
+  end  
 end
 
