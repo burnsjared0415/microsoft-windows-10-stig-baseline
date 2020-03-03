@@ -40,7 +40,6 @@ unacceptable)."
   end
   describe security_policy do
     its('MaximumPasswordAge') { should be > 0 }
-  end
-  
+  end  
 end
 
