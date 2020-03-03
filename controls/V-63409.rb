@@ -43,7 +43,6 @@ Settings >> Security Settings >> Account Policies >> Account Lockout Policy >>
   end
   describe security_policy do
     its('LockoutBadCount') { should be > 0 }
-  end
-  
+  end 
 end
 
