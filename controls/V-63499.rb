@@ -54,7 +54,6 @@ selected."
     describe audit_policy do
       its('Other System Events') { should eq 'Success and Failure' }
     end
-  end
-  
+  end  
 end
 
