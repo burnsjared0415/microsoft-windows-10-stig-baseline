@@ -53,6 +53,5 @@ get_volumes = command("wmic logicaldisk get FileSystem | findstr /r /v '^$' |Fin
       skip 'This control is not applicable'
     end
   end
-
 end
 
