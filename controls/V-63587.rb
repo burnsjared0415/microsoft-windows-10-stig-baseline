@@ -135,6 +135,5 @@ guide are available on IASE at http://iase.disa.mil/pki-pke/Pages/tools.aspx."
       it { should exist }
     end
   end
-  
 end
 
