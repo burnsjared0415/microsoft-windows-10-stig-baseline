@@ -64,7 +64,6 @@ permissions, it must be entered as \"NT Service\\Eventlog\"."
     it { should be_allowed('full-control', by_user: 'NT SERVICE\\EventLog') }
     it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
     it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
-  end
-  
+  end  
 end
 
