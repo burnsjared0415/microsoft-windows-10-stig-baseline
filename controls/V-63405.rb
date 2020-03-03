@@ -48,7 +48,6 @@ account."
     describe security_policy do
       its('LockoutDuration') { should cmp == 0 }
     end
-  end
-  
+  end 
 end
 
