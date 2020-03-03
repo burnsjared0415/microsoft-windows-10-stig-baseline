@@ -43,6 +43,5 @@ to \"Enabled\"."
     it { should have_property 'LimitBlankPasswordUse' }
     its('LimitBlankPasswordUse') { should cmp == 1 }
   end
-  
 end
 
