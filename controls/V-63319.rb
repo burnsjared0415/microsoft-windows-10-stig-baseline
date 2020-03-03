@@ -47,6 +47,5 @@ If \"System type\" is not \"64-bit operating system…\", this is a finding."
   describe os.name do 
     it{should eq "windows_10_enterprise"}
   end
-
 end
 
