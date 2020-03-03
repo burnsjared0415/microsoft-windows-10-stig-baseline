@@ -43,6 +43,5 @@ Internet Communication settings >> \"Turn off printing over HTTP\" to
     it { should have_property 'DisableHTTPPrinting' }
     its('DisableHTTPPrinting') { should cmp == 1 }
   end
-  
 end
 
