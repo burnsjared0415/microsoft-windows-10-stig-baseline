@@ -43,6 +43,5 @@ Group Policy objects have not changed\"."
     it { should have_property 'NoGPOListChanges' }
     its('NoGPOListChanges') { should cmp == 0 }
   end
-  
 end
 
