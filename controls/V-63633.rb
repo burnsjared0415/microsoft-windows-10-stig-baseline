@@ -41,5 +41,10 @@ standalone systems this is NA.
 Configure the policy value for Computer Configuration >> Administrative
 Templates >> System >> Logon >> \"Enumerate local users on domain-joined
 computers\" to \"Disabled\"."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System') do
+    it { should have_property 'EnumerateLocalUsers' }
+    its('EnumerateLocalUsers') { should cmp == 0 }
+  end
+  
 end
 
