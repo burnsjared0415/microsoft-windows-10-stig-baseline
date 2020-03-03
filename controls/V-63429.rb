@@ -36,7 +36,6 @@ passwords using reversible encryption\" to \"Disabled\"."
   
   describe security_policy do
     its('StorePasswordUsingReversibleEncryption') { should be eq 0 }
-  end
-  
+  end 
 end
 
