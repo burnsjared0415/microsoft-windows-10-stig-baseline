@@ -55,6 +55,5 @@ Configuration >> Administrative Templates >> Windows Components >> RSS Feeds >>
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds') do
     it { should_not have_property 'AllowBasicAuthInClear' }
   end
-  
 end
 
