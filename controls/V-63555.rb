@@ -43,7 +43,6 @@ MSS-Legacy.adml\" must be copied to the \\Windows\\PolicyDefinitions and
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip6\\Parameters') do
     it { should have_property 'DisableIPSourceRouting' }
     its('DisableIPSourceRouting') { should cmp == 2 }
-  end
-  
+  end  
 end
 
