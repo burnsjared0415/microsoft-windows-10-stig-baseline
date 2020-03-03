@@ -37,6 +37,5 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
    describe user('Administrator') do
     it { should_not exist }
   end
-  
 end
 
