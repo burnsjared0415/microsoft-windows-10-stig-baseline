@@ -55,7 +55,6 @@ Audit Policies >> Privilege Use >> \"Audit Sensitive Privilege Use\" with
     describe audit_policy do
       its('Sensitive Privilege Use') { should eq 'Success and Failure' }
     end
-  end
-  
+  end 
 end
 
