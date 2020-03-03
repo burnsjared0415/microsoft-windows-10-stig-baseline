@@ -54,7 +54,6 @@ selected."
     describe audit_policy do
       its('Account Lockout') { should eq 'Success' }
     end
-  end
-  
+  end  
 end
 
