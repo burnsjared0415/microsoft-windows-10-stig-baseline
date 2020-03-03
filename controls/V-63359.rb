@@ -131,5 +131,3 @@ days."
   end
 end
 
-end
-
