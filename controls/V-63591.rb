@@ -48,6 +48,5 @@ through other means such as using group policy from a later version of Windows
     it { should have_property 'AutoConnectAllowedOEM' }
    its('AutoConnectAllowedOEM') { should cmp == 0 }
   end
-  
 end
 
