@@ -46,6 +46,5 @@ Copy the OneDrive.admx and .adml files to the \\Windows\\PolicyDefinitions and
     it { should have_property 'DisablePersonalSync' }
     its('DisablePersonalSync') { should cmp == 1 }
   end
-
 end
 
