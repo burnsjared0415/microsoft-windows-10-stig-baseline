@@ -45,5 +45,16 @@ If this needs to be corrected, configure the policy value for User
 Configuration >> Administrative Templates >> Windows Components >> Attachment
 Manager >> \"Do not preserve zone information in file attachments\" to \"Not
 Configured\" or \"Disabled\"."
+  describe registry_key('HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments') do
+    it { should have_property 'SaveZoneInformation' }
+  end
+  describe.one do
+    describe registry_key('HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments') do
+      its('SaveZoneInformation') { should cmp == 2 }
+    end
+  end
+  describe registry_key('HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments') do
+    it { should_not have_property 'SaveZoneInformation' }
+  end
 end
 
