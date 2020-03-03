@@ -44,5 +44,17 @@ If this needs to be corrected, configure the policy value for Computer
 Configuration >> Administrative Templates >> Windows Components >> RSS Feeds >>
 \"Turn on Basic feed authentication over HTTP\" to \"Not Configured\" or
 \"Disabled\"."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds') do
+    it { should have_property 'AllowBasicAuthInClear' }
+  end
+  describe.one do
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds') do
+      its('AllowBasicAuthInClear') { should cmp == 0 }
+    end
+  end
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds') do
+    it { should_not have_property 'AllowBasicAuthInClear' }
+  end
+  
 end
 
