@@ -48,5 +48,10 @@ This policy setting requires the installation of the SecGuide custom templates
 included with the STIG package.  \"SecGuide.admx\" and \"SecGuide.adml\" must
 be copied to the \\Windows\\PolicyDefinitions and
 \\Windows\\PolicyDefinitions\\en-US directories respectively."
+  describe registry_key('HKEY_LOCAL_MACHINE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
+    it { should have_property 'LocalAccountTokenFilterPolicy' }
+    its('LocalAccountTokenFilterPolicy') { should cmp == 0 }
+  end
+  
 end
 
