@@ -42,5 +42,4 @@ secure RPC) servers\" to \"Require NTLMv2 session security\" and \"Require
      it { should have_property 'NTLMMinServerSec' }
      its('NTLMMinServerSec') { should cmp == 537395200 }
   end
-
 end
