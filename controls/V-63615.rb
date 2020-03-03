@@ -42,6 +42,5 @@ HTTP\" to \"Enabled\"."
     it { should have_property 'DisableWebPnPDownload' }
     its('DisableWebPnPDownload') { should cmp == 1 }
   end
-  
 end
 
