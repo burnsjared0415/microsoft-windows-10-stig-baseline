@@ -37,6 +37,5 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
   describe security_policy do
     its('EnableGuestAccount') { should cmp 0 }
   end
-  
 end
 
