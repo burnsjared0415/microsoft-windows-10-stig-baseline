@@ -40,7 +40,7 @@ Administrative Templates >> Windows Components >> Microsoft Edge >> \"Configure
 Password Manager\" to \"Disabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge\\Main') do
     it { should have_property 'FormSuggest Passwords' }
-    its('FormSuggest Passwords') { should eq no }
+    its('FormSuggest Passwords') { should eq "no" }
   end
 end
 
