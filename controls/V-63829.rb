@@ -1,19 +1,18 @@
-control "V-63831" do
-  title "User Account Control must virtualize file and registry write failures
-to per-user locations."
+control "V-63829" do
+  title "User Account Control must run all administrators in Admin Approval
+Mode, enabling UAC."
   desc  "User Account Control (UAC) is a security mechanism for limiting the
 elevation of privileges, including administrative accounts, unless authorized.
-This setting configures non-UAC compliant applications to run in virtualized
-file and registry entries in per-user locations, allowing them to run."
+This setting enables UAC."
   impact 0.5
   tag severity: nil
-  tag gtitle: "WN10-SO-000275"
-  tag gid: "V-63831"
-  tag rid: "SV-78321r1_rule"
-  tag stig_id: "WN10-SO-000275"
-  tag fix_id: "F-69759r1_fix"
-  tag cci: ["CCI-001084"]
-  tag nist: ["SC-3", "Rev_4"]
+  tag gtitle: "WN10-SO-000270"
+  tag gid: "V-63829"
+  tag rid: "SV-78319r1_rule"
+  tag stig_id: "WN10-SO-000270"
+  tag fix_id: "F-69757r1_fix"
+  tag cci: ["CCI-002038"]
+  tag nist: ["IA-11", "Rev_4"]
   tag false_negatives: nil
   tag false_positives: nil
   tag documentable: false
@@ -31,13 +30,17 @@ Registry Hive: HKEY_LOCAL_MACHINE
 Registry Path:
 \\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\
 
-Value Name: EnableVirtualization
+Value Name: EnableLUA
 
 Value Type: REG_DWORD
 Value: 1"
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Local Policies >> Security Options >> \"User
-Account Control: Virtualize file and registry write failures to per-user
-locations\" to \"Enabled\"."
+Account Control: Run all administrators in Admin Approval Mode\" to
+\"Enabled\"."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
+  it { should have_property 'EnableLUA' }
+  its('EnableLUAs') { should cmp == 1 }
+  end
 end
 

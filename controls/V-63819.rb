@@ -1,17 +1,17 @@
-control "V-63825" do
-  title "User Account Control must be configured to detect application
-installations and prompt for elevation."
+control "V-63819" do
+  title "User Account Control must, at minimum, prompt administrators for
+consent on the secure desktop."
   desc  "User Account Control (UAC) is a security mechanism for limiting the
 elevation of privileges, including administrative accounts, unless authorized.
-This setting requires Windows to respond to application installation requests
-by prompting for credentials."
+This setting configures the elevation requirements for logged on administrators
+to complete a task that requires raised privileges."
   impact 0.5
   tag severity: nil
-  tag gtitle: "WN10-SO-000260"
-  tag gid: "V-63825"
-  tag rid: "SV-78315r1_rule"
-  tag stig_id: "WN10-SO-000260"
-  tag fix_id: "F-69753r1_fix"
+  tag gtitle: "WN10-SO-000250"
+  tag gid: "V-63819"
+  tag rid: "SV-78309r1_rule"
+  tag stig_id: "WN10-SO-000250"
+  tag fix_id: "F-69747r1_fix"
   tag cci: ["CCI-001084"]
   tag nist: ["SC-3", "Rev_4"]
   tag false_negatives: nil
@@ -31,13 +31,17 @@ Registry Hive: HKEY_LOCAL_MACHINE
 Registry Path:
 \\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\
 
-Value Name: EnableInstallerDetection
+Value Name: ConsentPromptBehaviorAdmin
 
 Value Type: REG_DWORD
-Value: 1"
+Value: 2 (Prompt for consent on the secure desktop)"
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Local Policies >> Security Options >> \"User
-Account Control: Detect application installations and prompt for elevation\" to
-\"Enabled\"."
+Account Control: Behavior of the elevation prompt for administrators in Admin
+Approval Mode\" to \"Prompt for consent on the secure desktop\"."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
+    it { should have_property 'ConsentPromptBehaviorAdmin' }
+    its('ConsentPromptBehaviorAdmin') { should cmp == 2 }
+  end
 end
 

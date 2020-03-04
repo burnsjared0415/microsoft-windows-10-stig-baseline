@@ -1,19 +1,17 @@
-control "V-63821" do
-  title "User Account Control must automatically deny elevation requests for
-standard users."
+control "V-63817" do
+  title "User Account Control approval mode for the built-in Administrator must
+be enabled."
   desc  "User Account Control (UAC) is a security mechanism for limiting the
 elevation of privileges, including administrative accounts, unless authorized.
-Denying elevation requests from standard user accounts requires tasks that need
-elevation to be initiated by accounts with administrative privileges.  This
-ensures correct accounts are used on the system for privileged tasks to help
-mitigate credential theft."
+This setting configures the built-in Administrator account so that it runs in
+Admin Approval Mode."
   impact 0.5
   tag severity: nil
-  tag gtitle: "WN10-SO-000255"
-  tag gid: "V-63821"
-  tag rid: "SV-78311r1_rule"
-  tag stig_id: "WN10-SO-000255"
-  tag fix_id: "F-69749r1_fix"
+  tag gtitle: "WN10-SO-000245"
+  tag gid: "V-63817"
+  tag rid: "SV-78307r1_rule"
+  tag stig_id: "WN10-SO-000245"
+  tag fix_id: "F-69745r1_fix"
   tag cci: ["CCI-002038"]
   tag nist: ["IA-11", "Rev_4"]
   tag false_negatives: nil
@@ -33,13 +31,17 @@ Registry Hive: HKEY_LOCAL_MACHINE
 Registry Path:
 \\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\
 
-Value Name: ConsentPromptBehaviorUser
+Value Name: FilterAdministratorToken
 
 Value Type: REG_DWORD
-Value: 0"
+Value: 1"
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Local Policies >> Security Options >> \"User
-Account Control: Behavior of the elevation prompt for standard users\" to
-\"Automatically deny elevation requests\"."
+Account Control: Admin Approval Mode for the Built-in Administrator account\"
+to \"Enabled\"."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
+  it { should have_property 'FilterAdministratorToken' }
+  its('FilterAdministratorToken') { should cmp == 1 }
+  end
 end
 
