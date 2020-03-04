@@ -40,5 +40,9 @@ Value: 0x00000001 (1)"
   tag fix: "Configure the policy value for Computer Configuration >>
 Administrative Templates >> Windows Components >> Cloud Content >> \"Turn off
 Microsoft consumer experiences\" to \"Enabled\"."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent') do
+    it { should have_property 'DisableWindowsConsumerFeatures' }
+    its('DisableWindowsConsumerFeatures') { should cmp == 1 }
+  end
 end
 

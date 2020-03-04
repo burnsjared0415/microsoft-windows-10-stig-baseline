@@ -53,5 +53,9 @@ Click \"OK\".
 
 The \"Security descriptor:\" must be populated with \"O:BAG:BAD:(A;;RC;;;BA)
 for the policy to be enforced."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa') do
+    it { should have_property 'RestrictRemoteSAM' }
+    its('RestrictRemoteSAM') { should cmp 'O:BAG:BAD:(A;;RC;;;BA)'}
+  end
 end
 
