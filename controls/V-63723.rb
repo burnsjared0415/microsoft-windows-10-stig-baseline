@@ -37,5 +37,9 @@ Value: 1"
 Settings >> Security Settings >> Local Policies >> Security Options >>
 \"Microsoft network server: Digitally sign communications (if Client agrees)\"
 to \"Enabled\"."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
+    it { should have_property 'EnableSecuritySignature' }
+    its('EnableSecuritySignature') { should cmp == 1 }
+  end
 end
 
