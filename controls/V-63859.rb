@@ -1,20 +1,20 @@
-control "V-63861" do
-  title "The Create global objects user right must only be assigned to
-Administrators, Service, Local Service, and Network Service."
+control "V-63859" do
+  title "The Create a token object user right must not be assigned to any
+groups or accounts."
   desc  "Inappropriate granting of user rights can provide system,
 administrative, and other high level capabilities.
 
-    Accounts with the \"Create global objects\" user right can create objects
-that are available to all sessions, which could affect processes in other
-users' sessions.
+    The \"Create a token object\" user right allows a process to create an
+access token. This could be used to provide elevated rights and compromise a
+system.
   "
-  impact 0.5
+  impact 0.7
   tag severity: nil
-  tag gtitle: "WN10-UR-000050"
-  tag gid: "V-63861"
-  tag rid: "SV-78351r1_rule"
-  tag stig_id: "WN10-UR-000050"
-  tag fix_id: "F-69789r1_fix"
+  tag gtitle: "WN10-UR-000045"
+  tag gid: "V-63859"
+  tag rid: "SV-78349r1_rule"
+  tag stig_id: "WN10-UR-000045"
+  tag fix_id: "F-69787r2_fix"
   tag cci: ["CCI-002235"]
   tag nist: ["AC-6 (10)", "Rev_4"]
   tag false_negatives: nil
@@ -33,20 +33,13 @@ Run \"gpedit.msc\".
 Navigate to Local Computer Policy >> Computer Configuration >> Windows Settings
 >> Security Settings >> Local Policies >> User Rights Assignment.
 
-If any groups or accounts other than the following are granted the \"Create
-global objects\" user right, this is a finding:
-
-Administrators
-LOCAL SERVICE
-NETWORK SERVICE
-SERVICE"
+If any groups or accounts are granted the \"Create a token object\" user right,
+this is a finding."
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Local Policies >> User Rights Assignment >>
-\"Create global objects\" to only include the following groups or accounts:
-
-Administrators
-LOCAL SERVICE
-NETWORK SERVICE
-SERVICE"
+\"Create a token object\" to be defined but containing no entries (blank)."
+  describe security_policy do
+    its('SeCreateTokenPrivilege') { should eq [] }
+  end
 end
 
