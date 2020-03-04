@@ -45,10 +45,12 @@ computers\" to \"Disabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System') do
     it { should have_property 'EnumerateLocalUsers' }
     its('EnumerateLocalUsers') { should cmp == 0 }
-   end is_domain == 'WORKGROUP'
+   end if is_domain == 'WORKGROUP'
+   if is_domain == 'WORKGROUP'
     impact 0.0
     describe 'The system is not a member of a domain, control is NA' do
     skip 'The system is not a member of a domain, control is NA'
    end
+  end
 end
 
