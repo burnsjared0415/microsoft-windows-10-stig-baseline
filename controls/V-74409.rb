@@ -1,6 +1,6 @@
-control "V-74411" do
+control "V-74409" do
   title "Windows 10 must be configured to audit Object Access - Other Object
-Access Events successes."
+Access Events failures."
   desc  "Maintaining an audit trail of system activity logs can help identify
 configuration errors, troubleshoot service disruptions, and analyze compromises
 that have occurred, as well as detect attacks. Audit logs are necessary to
@@ -13,11 +13,11 @@ of task scheduler jobs and COM+ objects.
   "
   impact 0.5
   tag severity: nil
-  tag gtitle: "WN10-AU-000083"
-  tag gid: "V-74411"
-  tag rid: "SV-89085r1_rule"
-  tag stig_id: "WN10-AU-000083"
-  tag fix_id: "F-80953r2_fix"
+  tag gtitle: "WN10-AU-000084"
+  tag gid: "V-74409"
+  tag rid: "SV-89083r1_rule"
+  tag stig_id: "WN10-AU-000084"
+  tag fix_id: "F-80951r4_fix"
   tag cci: ["CCI-000172"]
   tag nist: ["AU-12 c", "Rev_4"]
   tag false_negatives: nil
@@ -44,12 +44,20 @@ Enter \"AuditPol /get /category:*\"
 
 Compare the AuditPol settings with the following:
 
-Object Access >> Other Object Access Events - Success
+Object Access >> Other Object Access Events - Failure
 
 If the system does not audit the above, this is a finding."
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Object Access >> \"Audit Other Object Access Events\" with
-\"Success\" selected."
+\"Failure\" selected."
+  describe.one do
+    describe audit_policy do
+      its('Other Object Access Events') { should eq 'Success and Failure' }
+    end
+    describe audit_policy do
+      its('Other Object Access Events') { should eq 'Failure' }
+    end
+  end
 end
 

@@ -51,5 +51,13 @@ If the system does not audit the above, this is a finding."
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Object Access >> \"Audit File Share\" with \"Failure\"
 selected."
+  describe.one do
+    describe audit_policy do
+      its('File Share') { should eq 'Success and Failure' }
+    end
+    describe audit_policy do
+      its('File Share') { should eq 'Failure' }
+    end
+  end
 end
 
