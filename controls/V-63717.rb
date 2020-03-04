@@ -45,5 +45,9 @@ Administrative Templates >> Windows Components >> Windows Hello for Business >>
 v1507 LTSB:
 The policy path is Computer Configuration >> Administrative Templates >>
 Windows Components >> Microsoft Passport for Work."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\PassportForWork') do
+    it { should have_property 'RequireSecurityDevice' }
+    its('RequireSecurityDevice') { should cmp == 1 }
+  end
 end
 
