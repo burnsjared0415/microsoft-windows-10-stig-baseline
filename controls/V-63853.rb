@@ -43,5 +43,13 @@ Settings >> Security Settings >> Local Policies >> User Rights Assignment >>
 accounts:
 
 Administrators"
+  describe.one do
+    describe security_policy do
+    its('SeBackupPrivilege') { should be eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+    its('SeBackupPrivilege') { should be eq [] }
+    end
+  end
 end
 

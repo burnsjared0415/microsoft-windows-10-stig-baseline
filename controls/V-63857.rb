@@ -1,21 +1,19 @@
-control "V-63847" do
-  title "The Act as part of the operating system user right must not be
-assigned to any groups or accounts."
+control "V-63857" do
+  title "The Create a pagefile user right must only be assigned to the
+Administrators group."
   desc  "Inappropriate granting of user rights can provide system,
 administrative, and other high level capabilities.
 
-    Accounts with the \"Act as part of the operating system\" user right can
-assume the identity of any user and gain access to resources that user is
-authorized to access.  Any accounts with this right can take complete control
-of a system.
+    Accounts with the \"Create a pagefile\" user right can change the size of a
+pagefile, which could affect system performance.
   "
-  impact 0.7
+  impact 0.5
   tag severity: nil
-  tag gtitle: "WN10-UR-000015"
-  tag gid: "V-63847"
-  tag rid: "SV-78337r1_rule"
-  tag stig_id: "WN10-UR-000015"
-  tag fix_id: "F-69775r1_fix"
+  tag gtitle: "WN10-UR-000040"
+  tag gid: "V-63857"
+  tag rid: "SV-78347r1_rule"
+  tag stig_id: "WN10-UR-000040"
+  tag fix_id: "F-69785r1_fix"
   tag cci: ["CCI-002235"]
   tag nist: ["AC-6 (10)", "Rev_4"]
   tag false_negatives: nil
@@ -34,11 +32,22 @@ Run \"gpedit.msc\".
 Navigate to Local Computer Policy >> Computer Configuration >> Windows Settings
 >> Security Settings >> Local Policies >> User Rights Assignment.
 
-If any groups or accounts (to include administrators), are granted the \"Act as
-part of the operating system\" user right, this is a finding."
+If any groups or accounts other than the following are granted the \"Create a
+pagefile\" user right, this is a finding:
+
+Administrators"
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Local Policies >> User Rights Assignment >>
-\"Act as part of the operating system\" to be defined but containing no entries
-(blank)."
+\"Create a pagefile\" to only include the following groups or accounts:
+
+Administrators"
+  describe.one do
+    describe security_policy do
+    its('SeCreatePagefilePrivilege') { should be eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+    its('SeCreatePagefilePrivilege') { should be eq [] }
+    end
+  end
 end
 
