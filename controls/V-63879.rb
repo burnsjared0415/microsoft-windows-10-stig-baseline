@@ -92,5 +92,27 @@ requirements.)
 
 Note: \"Local account\" is a built-in security group used to assign user rights
 and permissions to all local accounts."
+is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
+
+  if is_domain == 'WORKGROUP'
+    describe.one do
+      describe security_policy do
+        its('SeDenyRemoteInteractiveLogonRight') { should eq ['S-1-5-32-546'] }
+      end
+      describe security_policy do
+        its('SeDenyRemoteInteractiveLogonRight') { should eq [] }
+      end
+    end
+
+  else
+    get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
+    domain_sid = get_domain_sid[9..40]
+    describe security_policy do
+      its('SeDenyRemoteInteractiveLogonRight') { should include "S-1-21-#{domain_sid}-512" }
+    end
+    describe security_policy do
+      its('SeDenyRemoteInteractiveLogonRight') { should include "S-1-21-#{domain_sid}-519" }
+    end
+  end
 end
 

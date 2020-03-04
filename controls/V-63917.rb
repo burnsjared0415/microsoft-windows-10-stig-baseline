@@ -1,19 +1,20 @@
-control "V-63883" do
-  title "The Force shutdown from a remote system user right must only be
-assigned to the Administrators group."
+control "V-63917" do
+  title "The Load and unload device drivers user right must only be assigned to
+the Administrators group."
   desc  "Inappropriate granting of user rights can provide system,
 administrative, and other high level capabilities.
 
-    Accounts with the \"Force shutdown from a remote system\" user right can
-remotely shut down a system which could result in a DoS.
+    The \"Load and unload device drivers\" user right allows device drivers to
+dynamically be loaded on a system by a user. This could potentially be used to
+install malicious code by an attacker.
   "
   impact 0.5
   tag severity: nil
-  tag gtitle: "WN10-UR-000100"
-  tag gid: "V-63883"
-  tag rid: "SV-78373r1_rule"
-  tag stig_id: "WN10-UR-000100"
-  tag fix_id: "F-69811r1_fix"
+  tag gtitle: "WN10-UR-000120"
+  tag gid: "V-63917"
+  tag rid: "SV-78407r1_rule"
+  tag stig_id: "WN10-UR-000120"
+  tag fix_id: "F-69845r1_fix"
   tag cci: ["CCI-002235"]
   tag nist: ["AC-6 (10)", "Rev_4"]
   tag false_negatives: nil
@@ -32,15 +33,23 @@ Run \"gpedit.msc\".
 Navigate to Local Computer Policy >> Computer Configuration >> Windows Settings
 >> Security Settings >> Local Policies >> User Rights Assignment.
 
-If any groups or accounts other than the following are granted the \"Force
-shutdown from a remote system\" user right, this is a finding:
+If any groups or accounts other than the following are granted the \"Load and
+unload device drivers\" user right, this is a finding:
 
 Administrators"
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Local Policies >> User Rights Assignment >>
-\"Force shutdown from a remote system\" to only include the following groups or
+\"Load and unload device drivers\" to only include the following groups or
 accounts:
 
 Administrators"
+  describe.one do
+    describe security_policy do
+      its('SeLoadDriverPrivilege') { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeLoadDriverPrivilege') { should eq [] }
+    end
+  end
 end
 

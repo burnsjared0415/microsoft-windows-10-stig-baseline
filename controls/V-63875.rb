@@ -69,6 +69,9 @@ domain_sid = get_domain_sid[9..40]
     describe security_policy do
       its('SeDenyServiceLogonRight') { should include "S-1-21-#{domain_sid}-519" }
     end
+    describe security_policy do
+      its('SeDenyServiceLogonRight') { should eq [] }
+    end
   end
 end
 

@@ -49,5 +49,25 @@ Administrators
 LOCAL SERVICE
 NETWORK SERVICE
 SERVICE"
+  describe.one do
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq ['S-1-5-32-544', 'S-1-5-19', 'S-1-5-20', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+     its('SeAuditPrivilege') { should eq ['S-1-5-19'] }
+    end
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq ['S-1-5-20'] }
+    end
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq ['S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq [] }
+    end
+  end
 end
 
