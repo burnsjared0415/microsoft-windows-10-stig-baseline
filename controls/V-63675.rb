@@ -93,5 +93,18 @@ communications, or work product, related to personal representation or services
 by attorneys, psychotherapists, or clergy, and their assistants.  Such
 communications and work product are private and confidential.  See User
 Agreement for details."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
+    it { should have_property 'LegalNoticeText' }
+  end
+
+  key = registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeText.to_s
+
+  k = key.gsub("\u0000", '')
+  legal_notice_text = attribute('LegalNoticeText')
+
+  describe 'The required legal notice text' do
+    subject { k.scan(/[\w().;,!]/).join }
+    it {should cmp legal_notice_text.scan(/[\w().;,!]/).join }
+  end
 end
 
