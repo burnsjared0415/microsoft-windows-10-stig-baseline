@@ -56,5 +56,19 @@ If an organization is using v1709 or later of Windows 10 this may be configured
 to \"2 - Enhanced\" to support Windows Analytics. V-82145 must also be
 configured to limit the Enhanced diagnostic data to the minimum required by
 Windows Analytics."
+  describe registry_key('HKEY_LOCAL_MACHINE\\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection') do
+    it { should have_property 'AllowTelemetry' }
+  end
+  describe.one do
+    describe registry_key('HKEY_LOCAL_MACHINE\\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection') do
+    its('AllowTelemetry') { should cmp == 0 }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection') do
+    its('AllowTelemetry') { should cmp == 1 }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection') do
+    its('AllowTelemetry') { should cmp == 2 }
+    end
+  end
 end
 
