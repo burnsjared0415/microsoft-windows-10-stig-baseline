@@ -71,5 +71,9 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
+  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel') do
+    it { should have_property 'DisableExceptionChainValidation' }
+    its('DisableExceptionChainValidation') { should cmp == 0 }
+  end
 end
 
