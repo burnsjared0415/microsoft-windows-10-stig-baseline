@@ -48,5 +48,8 @@ Click \"Settings\" in the \"Performance\" section.
 Select the \"Data Execution Prevention\" tab.
 Applications that are opted out are configured in the window below the
 selection \"Turn on DEP for all programs and services except those I select:\"."
+  describe command("BCDEdit /enum {current} | FindStr nx") do
+    its('stdout') { should eq "nx             OptOut\r\n"}
+  end
 end
 
