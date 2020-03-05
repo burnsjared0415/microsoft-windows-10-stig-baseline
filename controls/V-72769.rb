@@ -34,7 +34,7 @@ this is a finding."
 View Bluetooth Settings.
 Ensure \"Alert me when a new Bluetooth device wants to connect\" is checked."
   describe "Configure Bluetooth to notify users if devices attempt to connect. View Bluetooth Settings. Ensure \"Alert me when a new Bluetooth device wants to connect\" is checked" do
-  skip 'This is NA if the system does not have Bluetooth'
+    skip 'This is NA if the system does not have Bluetooth'
   end
 end
 
