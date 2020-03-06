@@ -41,8 +41,8 @@ Administrative Templates >> Windows Components >> Windows Logon Options >>
 restart\" to \"Disabled\"."
 
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
-  it { shoud have_property 'DisableAutomaticRestartSignOn' }
-  its('DisableAutomaticRestartSignOn') { should cmp == 1 }
+    it { shoud have_property 'DisableAutomaticRestartSignOn' }
+    its('DisableAutomaticRestartSignOn') { should cmp == 1 }
   end
 end
 

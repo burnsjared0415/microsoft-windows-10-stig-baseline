@@ -38,8 +38,8 @@ Administrative Templates >> Windows Components >> Windows Remote Management
 (WinRM) >> WinRM Client >> \"Allow unencrypted traffic\" to \"Disabled\"."
 
   describe registry_key('HKEY_LOCAL_MACHIN\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client') do
-  it { should have_property 'AllowUnencryptedTraffic' }
-  its('AllowUnencryptedTraffic') { should cmp == 0 }
+    it { should have_property 'AllowUnencryptedTraffic' }
+    its('AllowUnencryptedTraffic') { should cmp == 0 }
   end
 end
 

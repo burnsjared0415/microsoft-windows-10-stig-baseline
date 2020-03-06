@@ -36,6 +36,6 @@ alternate operating systems."
   describe command("bcdedit | Findstr description | Findstr /v /c:'Windows Boot Manager'") do
     its('stdout') { should eq "description             Windows 10\r\n" }
   end
-  only_if { os['ProductName'].to_i < Windows_10_enterprise }
+    only_if { os['ProductName'].to_i < Windows_10_enterprise }
 end
 
