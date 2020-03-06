@@ -1,6 +1,5 @@
-control "V-63447" do
-  title "The system must be configured to audit Account Management - User
-Account Management failures."
+control "V-63467" do
+  title "The system must be configured to audit Logon/Logoff - Logon successes."
   desc  "Maintaining an audit trail of system activity logs can help identify
 configuration errors, troubleshoot service disruptions, and analyze compromises
 that have occurred, as well as detect attacks.  Audit logs are necessary to
@@ -8,20 +7,19 @@ provide a trail of evidence in case the system or network is compromised.
 Collecting this data is essential for analyzing the security of information
 assets and detecting signs of suspicious and unexpected behavior.
 
-    User Account Management records events such as creating, changing,
-deleting, renaming, disabling, or enabling user accounts.
+    Logon records user logons. If this is an interactive logon, it is recorded
+on the local system. If it is to a network share, it is recorded on the system
+accessed.
   "
   impact 0.5
   tag severity: nil
-  tag gtitle: "WN10-AU-000035"
-  tag gid: "V-63447"
-  tag rid: "SV-77937r1_rule"
-  tag stig_id: "WN10-AU-000035"
-  tag fix_id: "F-69375r1_fix"
-  tag cci: ["CCI-000018", "CCI-000172", "CCI-001403", "CCI-001404",
-"CCI-001405", "CCI-002130", "CCI-002234"]
-  tag nist: ["AC-2 (4)", "AU-12 c", "AC-2 (4)", "AC-2 (4)", "AC-2 (4)", "AC-2
-(4)", "AC-6 (9)", "Rev_4"]
+  tag gtitle: "WN10-AU-000075"
+  tag gid: "V-63467"
+  tag rid: "SV-77957r1_rule"
+  tag stig_id: "WN10-AU-000075"
+  tag fix_id: "F-69395r1_fix"
+  tag cci: ["CCI-000067", "CCI-000172"]
+  tag nist: ["AC-17 (1)", "AU-12 c", "Rev_4"]
   tag false_negatives: nil
   tag false_positives: nil
   tag documentable: false
@@ -44,17 +42,16 @@ Enter \"AuditPol /get /category:*\".
 Compare the AuditPol settings with the following.  If the system does not audit
 the following, this is a finding:
 
-Account Management >> User Account Management - Failure"
+Logon/Logoff >> Logon - Success"
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
-Audit Policies >> Account Management >> \"Audit User Account Management\" with
-\"Failure\" selected."
-    describe.one do
+Audit Policies >> Logon/Logoff >> \"Audit Logon\" with \"Success\" selected."
+  describe.one do
     describe audit_policy do
-      its('User Account Management') { should eq 'Failure' }
+      its('Logon') { should eq 'Success' }
     end
     describe audit_policy do
-      its('User Account Management') { should eq 'Success and Failure' }
+      its('Logon') { should eq 'Success and Failure' }
     end
   end
 end

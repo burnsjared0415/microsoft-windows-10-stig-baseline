@@ -34,7 +34,7 @@ Select \"Turn Windows Features on or off\".
 
 De-select \"TFTP Client\"."
   describe service('TFTP Client') do
-  it { should_not be_installed }
+    it { should_not be_installed }
   end  
 end
 
