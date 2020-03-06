@@ -40,7 +40,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 change\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'NoLMHash' }
-    its('NoLMHash') { should cmp == 1 }
+    its('NoLMHash') { should cmp 1 }
   end
 end
 

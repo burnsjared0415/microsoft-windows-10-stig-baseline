@@ -36,6 +36,6 @@ Administrative Templates >> Windows Components >> Windows Remote Management
 to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service') do
     it { should have_property 'DisableRunAs' }
-    its('DisableRunAs') { should cmp == 1 }
+    its('DisableRunAs') { should cmp 1 }
   end
 end

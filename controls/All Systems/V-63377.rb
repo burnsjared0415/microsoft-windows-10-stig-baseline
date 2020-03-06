@@ -37,8 +37,8 @@ needs be documented with the ISSO.  In addition, any applicable requirements
 from the IIS STIG must be addressed."
   tag fix: "Uninstall \"Internet Information Services\" or \"Internet
 Information Services Hostable Web Core\" from the system."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\InetStp') do
-    it { should_not have_property 'InstallPath' }
+  describe windows_feature('Internet Information Services') do
+    it { should_not be_installed }
   end 
 end
 

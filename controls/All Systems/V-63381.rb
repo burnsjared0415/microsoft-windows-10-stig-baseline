@@ -34,7 +34,7 @@ system.
 Run \"Programs and Features\".
 Select \"Turn Windows Features on or off\".
 De-select \"Simple Network Management Protocol (SNMP)\"."
-  describe service('SNMP') do
+  describe windows_feature('SNMP') do
     it { should_not be_installed }
   end  
 end

@@ -39,7 +39,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 at a minimum."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LDAP') do
     it { should have_property 'LDAPClientIntegrity' }
-    its('LDAPClientIntegrity') { should cmp == 1 }
+    its('LDAPClientIntegrity') { should cmp 1 }
   end
 end
 

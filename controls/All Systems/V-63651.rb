@@ -38,7 +38,7 @@ Administrative Templates >> System >> Remote Assistance >> \"Configure
 Solicited Remote Assistance\" to \"Disabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fAllowToGetHelp' }
-    its('fAllowToGetHelp') { should cmp == 0}
+    its('fAllowToGetHelp') { should cmp 0}
   end
 end
 

@@ -47,7 +47,7 @@ The policy path is Computer Configuration >> Administrative Templates >>
 Windows Components >> Microsoft Passport for Work."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\PassportForWork') do
     it { should have_property 'RequireSecurityDevice' }
-    its('RequireSecurityDevice') { should cmp == 1 }
+    its('RequireSecurityDevice') { should cmp 1 }
   end
 end
 

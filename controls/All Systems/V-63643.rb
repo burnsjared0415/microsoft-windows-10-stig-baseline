@@ -38,7 +38,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >> \"Domain
 member: Digitally encrypt secure channel data (when possible)\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters') do
    it { should have_property 'SealSecureChannel' }
-   its('SealSecureChannel') { should cmp == 1 }
+   its('SealSecureChannel') { should cmp 1 }
   end
 end
 

@@ -39,7 +39,7 @@ Operating System Drives \"Configure minimum PIN length for startup\" to
 \"Enabled\" with \"Minimum characters:\" set to \"6\" or greater."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\Microsoft\Windows\CurrentVersion\Bitlocker') do
     it { should have_property 'MinimumPIN' }
-    its('MinimumPIN') { should cmp >= 6 }
+    its('MinimumPIN') { should be >= 6 }
   end
 end
 

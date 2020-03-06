@@ -48,7 +48,7 @@ copied to the \\Windows\\PolicyDefinitions and
 \\Windows\\PolicyDefinitions\\en-US directories respectively."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel') do
     it { should have_property 'DisableExceptionChainValidation'}
-    its('DisableExceptionChainValidation') { should cmp == 0 }
+    its('DisableExceptionChainValidation') { should cmp 0 }
   end
 end
 

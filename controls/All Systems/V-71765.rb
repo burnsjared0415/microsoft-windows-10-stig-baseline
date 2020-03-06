@@ -38,7 +38,7 @@ Administrative Templates >> Network >> Network Connections >> \"Prohibit use of
 Internet Connection Sharing on your DNS domain network\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections') do
     it { should have_property 'NC_ShowSharedAccessUI' }
-    its('NC_ShowSharedAccessUI') { should cmp == 0 }
+    its('NC_ShowSharedAccessUI') { should cmp 0 }
   end
 end
 

@@ -46,7 +46,7 @@ Administrative Templates >> System >> Audit Process Creation >> \"Include
 command line in process creation events\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit') do
     it { should have_property 'ProcessCreationIncludeCmdLine_Enabled' }
-    its('ProcessCreationIncludeCmdLine_Enabled') { should cmp == 1 }
+    its('ProcessCreationIncludeCmdLine_Enabled') { should cmp 1 }
   end
 end
 

@@ -39,7 +39,7 @@ connection to non-domain networks when connected to domain authenticated
 network\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WcmSvc\\GroupPolicy') do
     it { should have_property 'fBlockNonDomain' }
-    its('fBlockNonDomain') { should cmp == 1 }
+    its('fBlockNonDomain') { should cmp 1 }
   end
 end
 

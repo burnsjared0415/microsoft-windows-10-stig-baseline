@@ -52,7 +52,7 @@ be copied to the \\Windows\\PolicyDefinitions and
   
   describe registry_key('HKEY_LOCAL_MACHINE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'LocalAccountTokenFilterPolicy' }
-    its('LocalAccountTokenFilterPolicy') { should cmp == 0 }
+    its('LocalAccountTokenFilterPolicy') { should cmp 0 }
   end if is_domain != 'WORKGROUP'
 
   if is_domain == 'WORKGROUP'

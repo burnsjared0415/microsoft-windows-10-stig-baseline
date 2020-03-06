@@ -41,7 +41,7 @@ policy processing\" to \"Enabled\" and select the option \"Process even if the
 Group Policy objects have not changed\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Group Policy\\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}') do
     it { should have_property 'NoGPOListChanges' }
-    its('NoGPOListChanges') { should cmp == 0 }
+    its('NoGPOListChanges') { should cmp 0 }
   end
 end
 

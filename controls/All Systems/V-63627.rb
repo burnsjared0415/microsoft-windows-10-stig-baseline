@@ -59,7 +59,7 @@ certificate:\"."
 
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters') do
     it { should have_property 'DevicePKInitEnabled' }
-    its('DevicePKInitEnabled') { should cmp == 1 }
+    its('DevicePKInitEnabled') { should cmp 1 }
   end if is_domain != 'WORKGROUP'
 
   if is_domain == 'WORKGROUP'

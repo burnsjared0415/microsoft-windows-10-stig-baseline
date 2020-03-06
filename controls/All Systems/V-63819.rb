@@ -41,7 +41,7 @@ Account Control: Behavior of the elevation prompt for administrators in Admin
 Approval Mode\" to \"Prompt for consent on the secure desktop\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'ConsentPromptBehaviorAdmin' }
-    its('ConsentPromptBehaviorAdmin') { should cmp == 2 }
+    its('ConsentPromptBehaviorAdmin') { should cmp 2 }
   end
 end
 

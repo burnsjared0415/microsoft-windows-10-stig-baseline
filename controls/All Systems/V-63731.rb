@@ -39,7 +39,7 @@ Remote Desktop Session Host >> Device and Resource Redirection >> \"Do not
 allow drive redirection\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fDisableCdm' }
-    its('fDisableCdm') { should cmp == 1 }
+    its('fDisableCdm') { should cmp 1 }
   end
 end
 

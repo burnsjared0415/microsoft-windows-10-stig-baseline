@@ -67,7 +67,7 @@ Run \"tpm.msc\" for configuration options in Windows."
   
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion') do
    it { should have_property 'ReleaseId' }
-   its('ReleaseId') { should cmp >= '1703' }
+   its('ReleaseId') { should be >= '1703' }
   end
 end
 

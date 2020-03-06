@@ -40,6 +40,6 @@ secure RPC) servers\" to \"Require NTLMv2 session security\" and \"Require
 128-bit encryption\" (all options selected)."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0') do
      it { should have_property 'NTLMMinServerSec' }
-     its('NTLMMinServerSec') { should cmp == 537395200 }
+     its('NTLMMinServerSec') { should cmp 537395200 }
   end
 end

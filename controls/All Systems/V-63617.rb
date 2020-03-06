@@ -41,7 +41,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 to \"Enabled\"."
    describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'LimitBlankPasswordUse' }
-    its('LimitBlankPasswordUse') { should cmp == 1 }
+    its('LimitBlankPasswordUse') { should cmp 1 }
   end
 end
 

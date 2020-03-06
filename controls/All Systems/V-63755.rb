@@ -40,7 +40,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 \"Disabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'EveryoneIncludesAnonymous' }
-    its('EveryoneIncludesAnonymous') { should cmp == 0 }
+    its('EveryoneIncludesAnonymous') { should cmp 0 }
   end
 end
 

@@ -37,7 +37,7 @@ Administrative Templates >> System >> Logon >> \"Do not display network
 selection UI\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System') do
     it { should have_property 'DontDisplayNetworkSelectionUI' }
-    its('DontDisplayNetworkSelectionUI') { should cmp == 1 }
+    its('DontDisplayNetworkSelectionUI') { should cmp 1 }
   end
 end
 

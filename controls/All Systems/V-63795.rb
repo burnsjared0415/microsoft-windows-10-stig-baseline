@@ -44,7 +44,7 @@ AES256_HMAC_SHA1
 Future encryption types"
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters') do
     it { should have_property 'SupportedEncryptionTypes' }
-    its('SupportedEncryptionTypes') { should cmp == 2147483640 }
+    its('SupportedEncryptionTypes') { should cmp 2147483640 }
   end
 end
 

@@ -105,7 +105,7 @@ days."
 
         describe "#{user}'s last logon" do
           describe date_last_logged_on do
-            it { should cmp <= 35 }
+            it { should be <= 35 }
           end
         end if !inactive_accounts.empty?
       end

@@ -43,7 +43,7 @@ Account Control: Behavior of the elevation prompt for standard users\" to
 \"Automatically deny elevation requests\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'ConsentPromptBehaviorUser' }
-    its('ConsentPromptBehaviorUser') { should cmp == 0 }
+    its('ConsentPromptBehaviorUser') { should cmp 0 }
   end
 end
 

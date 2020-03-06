@@ -41,7 +41,7 @@ Account Control: Detect application installations and prompt for elevation\" to
 \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'EnableInstallerDetection' }
-    its('EnableInstallerDetection') { should cmp == 1 }
+    its('EnableInstallerDetection') { should cmp 1 }
   end
 end
 

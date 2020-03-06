@@ -42,7 +42,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 response only. Refuse LM & NTLM\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'LmCompatibilityLevel' }
-    its('LmCompatibilityLevel') { should cmp == 5 }
+    its('LmCompatibilityLevel') { should cmp 5 }
   end
 end
 

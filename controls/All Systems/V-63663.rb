@@ -41,7 +41,7 @@ Administrative Templates >> Windows Components >> Application Compatibility >>
 \"Turn off Inventory Collector\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat') do
     it { should have_property 'DisableInventory' }
-    its('DisableInventory') { should cmp == 1 }
+    its('DisableInventory') { should cmp 1 }
   end
 end
 

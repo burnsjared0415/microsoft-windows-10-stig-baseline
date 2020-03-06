@@ -53,7 +53,7 @@ a Windows Domain\" to \"Enabled\"."
   
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WcmSvc\\GroupPolicy') do
    it { should have_property 'fMinimizeConnections' }
-   its('fMinimizeConnections') { should cmp == 1 }
+   its('fMinimizeConnections') { should cmp 1 }
   end if is_domain != 'WORKGROUP'
 
   if is_domain == 'WORKGROUP'

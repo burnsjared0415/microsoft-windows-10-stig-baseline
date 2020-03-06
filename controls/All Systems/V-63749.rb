@@ -38,7 +38,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 shares\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'RestrictAnonymous' }
-    its('RestrictAnonymous') { should cmp == 1 }
+    its('RestrictAnonymous') { should cmp 1 }
   end
 end
 

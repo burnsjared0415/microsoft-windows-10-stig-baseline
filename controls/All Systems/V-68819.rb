@@ -46,7 +46,7 @@ Administrative Templates >> Windows Components >> Windows PowerShell >> \"Turn
 on PowerShell Script Block Logging\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging') do
     it { should have_property 'EnableScriptBlockLogging' }
-    its('EnableScriptBlockLogging') { should cmp == 1 }
+    its('EnableScriptBlockLogging') { should cmp 1 }
   end
 end
 

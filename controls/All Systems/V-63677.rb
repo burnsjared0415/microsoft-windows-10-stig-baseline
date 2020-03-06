@@ -43,7 +43,7 @@ v1607:
 The policy name is \"Use enhanced anti-spoofing when available\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Biometrics\\FacialFeatures') do
     it { should have_property 'EnhancedAntiSpoofing' }
-    its('EnhancedAntiSpoofing') { should cmp == 1 }
+    its('EnhancedAntiSpoofing') { should cmp 1 }
   end
 end
 

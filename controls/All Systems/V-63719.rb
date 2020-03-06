@@ -40,7 +40,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'RequireSecuritySignature' }
-    its('RequireSecuritySignature') { should cmp == 1 }
+    its('RequireSecuritySignature') { should cmp 1 }
   end
 end
 

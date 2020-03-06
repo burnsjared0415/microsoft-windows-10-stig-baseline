@@ -89,15 +89,14 @@ before running downloaded unknown software\" selected."
     it { should have_property 'ShellSmartScreenLevel' }
     its('ShellSmartScreenLevel') { should cmp 'Block' }
   end
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System') do
-    it { should have_property 'EnableSmartScreen' }
-  end
   describe.one do
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System') do
-      its('EnableSmartScreen') { should cmp == 1 }
+      it { should have_property 'EnableSmartScreen' }
+      its('EnableSmartScreen') { should cmp 1 }
     end
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\System') do
-      its('EnableSmartScreen') { should cmp == 2 }
+      it { should have_property 'EnableSmartScreen' }
+      its('EnableSmartScreen') { should cmp 2 }
     end
   end
 end

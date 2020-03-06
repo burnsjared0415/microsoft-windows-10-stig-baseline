@@ -39,7 +39,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\LSA') do
     it { should have_property 'UseMachineId' }
-    its('UseMachineId') { should cmp == 1 }
+    its('UseMachineId') { should cmp 1 }
   end
 end
 

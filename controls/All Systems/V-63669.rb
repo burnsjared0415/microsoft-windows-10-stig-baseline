@@ -42,7 +42,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 excluding \"0\" which is effectively disabled."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'InactivityTimeoutSecs' }
-    its('InactivityTimeoutSecs') { should cmp =< 900 }
+    its('InactivityTimeoutSecs') { should be =< 900 }
   end
 end
 

@@ -54,9 +54,17 @@ copied to the \\Windows\\PolicyDefinitions and
 \\Windows\\PolicyDefinitions\\en-US directories respectively.
 
 The system must be restarted for the changes to take effect. "
-  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10') do
-    it { should have_property 'Start' }
-    its('Start') { should cmp == 4 }
+  if windows_feature('FS-SMB1').installed?
+    describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10') do
+      it { should have_property 'Start' }
+      its('Start') { should cmp 4 }
+  end
+  else
+    impact 0.0
+    desc 'SMBv1 is not installed on this system, therefore this control is not applicable'
+    describe 'SMBv1 is not installed on this system, therefore this control is not applicable' do
+      skip 'SMBv1 is not installed on this system, therefore this control is not applicable'
+    end
   end
 end
 

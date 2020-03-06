@@ -41,7 +41,7 @@ Account Control: Admin Approval Mode for the Built-in Administrator account\"
 to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'FilterAdministratorToken' }
-    its('FilterAdministratorToken') { should cmp == 1 }
+    its('FilterAdministratorToken') { should cmp 1 }
   end
 end
 

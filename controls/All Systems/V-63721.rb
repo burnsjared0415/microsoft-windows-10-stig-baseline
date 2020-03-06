@@ -49,7 +49,7 @@ The policy path is Computer Configuration >> Administrative Templates >>
 Windows Components >> Microsoft Passport for Work >> Pin Complexity."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\PassportForWork\\PINComplexity') do
     it { should have_property 'MinimumPINLength' }
-    its('MinimumPINLength') { should cmp >= 6 }
+    its('MinimumPINLength') { should be >= 6 }
   end
 end
 

@@ -76,24 +76,26 @@ joined systems, configure through domain group policy as \"HTTP only (0)\" or
 \"Lan (1)\". Standalone systems configure using Settings >> Update & Security
 >> Windows Update >> Advanced Options >> \"Choose how updates are delivered\"
 with either \"Off\" or \"PCs on my local network\" selected."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config') do
-    it { should have_property 'DODownloadMode' }
-  end
   describe.one do
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config') do
-      its('DODownloadMode') { should cmp == 0 }
+      it { should have_property 'DODownloadMode' }
+      its('DODownloadMode') { should cmp 0 }
     end
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config') do
-      its('DODownloadMode') { should cmp == 1 }
+      it { should have_property 'DODownloadMode' }
+      its('DODownloadMode') { should cmp 1 }
     end
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config') do
-      its('DODownloadMode') { should cmp == 2 }
+      it { should have_property 'DODownloadMode' }
+      its('DODownloadMode') { should cmp 2 }
     end
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config') do
-      its('DODownloadMode') { should cmp == 99 }
+      it { should have_property 'DODownloadMode' }
+      its('DODownloadMode') { should cmp 99 }
     end
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config') do
-      its('DODownloadMode') { should cmp == 100 }
+      it { should have_property 'DODownloadMode' }
+      its('DODownloadMode') { should cmp 100 }
     end
   end
 end

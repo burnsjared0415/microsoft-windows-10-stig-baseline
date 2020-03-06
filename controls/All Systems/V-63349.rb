@@ -73,11 +73,11 @@ v1607 (Build 14393)
 v1809 (Build 17763)"
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion') do
     it { should have_property 'CurrentVersion' }
-    its('CurrentVersion') { should cmp >= '6.3' }
+    its('CurrentVersion') { should be >= '6.3' }
   end
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion') do
     it { should have_property 'CurrentBuildNumber' }
-    its('ReleaseId') { should cmp >= '1703' }
+    its('ReleaseId') { should be >= '1703' }
   end
 end
 

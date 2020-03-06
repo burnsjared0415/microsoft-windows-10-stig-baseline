@@ -58,7 +58,7 @@ Copy the OneDrive.admx and .adml files to the \\Windows\\PolicyDefinitions and
 \\Windows\\PolicyDefinitions\\en-US directories respectively."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\AllowTenantList') do
     it { should have_property '1111-2222-3333-4444' }
-    its('1111-2222-3333-4444') { should cmp == 1111-2222-3333-4444 }
+    its('1111-2222-3333-4444') { should cmp 1111-2222-3333-4444 }
   end
 end
 

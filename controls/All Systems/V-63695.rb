@@ -46,12 +46,10 @@ If this needs to be corrected, configure the policy value for Computer
 Configuration >> Administrative Templates >> Windows Components >> File
 Explorer >> \"Turn off shell protocol protected mode\" to \"Not Configured\" or
 \"Disabled\"."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do
-    it { should have_property 'PreXPSP2ShellProtocolBehavior' }
-  end
   describe.one do
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do
-      its('PreXPSP2ShellProtocolBehavior') { should cmp == 0 }
+      it { should have_property 'PreXPSP2ShellProtocolBehavior' }
+      its('PreXPSP2ShellProtocolBehavior') { should cmp 0 }
     end
   end
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do

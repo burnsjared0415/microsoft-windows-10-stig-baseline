@@ -45,15 +45,14 @@ them unattended.
 Settings >> Security Settings >> Local Policies >> Security Options >>
 \"Interactive logon: Smart card removal behavior\" to  \"Lock Workstation\" or
 \"Force Logoff\"."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
-    it { should have_property 'SCRemoveOption' }
-  end
   describe.one do
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
-      its('SCRemoveOption') { should cmp == 1 }
+      it { should have_property 'SCRemoveOption' }
+      its('SCRemoveOption') { should cmp 1 }
     end
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
-      its('SCRemoveOption') { should cmp == 2 }
+      it { should have_property 'SCRemoveOption' }
+      its('SCRemoveOption') { should cmp 2 }
     end
   end
 end

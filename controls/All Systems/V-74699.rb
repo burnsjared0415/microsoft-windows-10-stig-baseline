@@ -43,7 +43,7 @@ Administrative Templates >> System >> Credentials Delegation >> \"Remote host
 allows delegation of non-exportable credentials\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredentialsDelegation') do
     it { should have_property 'AllowProtectedCreds' }
-    its('AllowProtectedCreds') { should cmp == 1 }
+    its('AllowProtectedCreds') { should cmp 1 }
   end  
 end
 

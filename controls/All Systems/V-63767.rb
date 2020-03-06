@@ -38,7 +38,7 @@ Settings >> Security Settings >> Local Policies >> Security Options >>
 online identities\" to \"Disabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\LSA\\pku2u') do
     it { should have_property 'AllowOnlineID' }
-    its('AllowOnlineID') { should cmp == 0 }
+    its('AllowOnlineID') { should cmp 0 }
   end
 end
 

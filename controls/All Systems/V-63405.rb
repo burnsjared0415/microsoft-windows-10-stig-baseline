@@ -46,7 +46,7 @@ account."
       its('LockoutDuration') { should be >= 15 }
     end
     describe security_policy do
-      its('LockoutDuration') { should cmp == 0 }
+      its('LockoutDuration') { should cmp 0 }
     end
   end 
 end

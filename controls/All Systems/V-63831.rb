@@ -41,7 +41,7 @@ Account Control: Virtualize file and registry write failures to per-user
 locations\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'EnableVirtualization' }
-    its('EnableVirtualization') { should cmp == 1 }
+    its('EnableVirtualization') { should cmp 1 }
   end
 end
 

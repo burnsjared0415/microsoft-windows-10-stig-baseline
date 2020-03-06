@@ -52,7 +52,7 @@ scripts\" to \"Not Configured\" or \"Disabled\"."
 
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer') do
     it { should have_property 'SafeForScripting' }
-    its('SafeForScripting') { should cmp == 0 }
+    its('SafeForScripting') { should cmp 0 }
   end if is_domain != 'WORKGROUP'
 
   if is_domain == 'WORKGROUP'

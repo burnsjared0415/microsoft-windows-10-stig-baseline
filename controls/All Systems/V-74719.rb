@@ -31,8 +31,13 @@ If the \"Startup Type\" is not \"Disabled\" or the \"Status\" is \"Running\",
 this is a finding."
   tag fix: "Configure the \"Secondary Logon\" service \"Startup Type\" to
 \"Disabled\"."
-  describe service('Secondary Logon') do
-    it { should_not be_enabled }
+  describe.one do
+    describe service('Secondary Logon') do
+      it { should_not be_enabled }
+    end
+    describe service('Secondary Logon') do
+      it { should_not be_running}
+    end
   end
 end
 

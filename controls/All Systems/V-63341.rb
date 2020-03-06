@@ -38,7 +38,7 @@ Administrative Templates >> Windows Components >> Windows Remote Management
 
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client') do
     it { should have_property 'AllowDigest' }
-    its('AllowDigest') { should cmp == 0 }
+    its('AllowDigest') { should cmp 0 }
   end
 end
 

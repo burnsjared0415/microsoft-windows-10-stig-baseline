@@ -43,7 +43,7 @@ Administrative Templates >> Windows Components >> Microsoft Edge >> \"Allow
 clearing browsing data on exit\" to \"Disabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge\\Privacy') do
     it { should have_property 'ClearBrowsingHistoryOnExit' }
-    its('ClearBrowsingHistoryOnExit') { should cmp == 0 }
+    its('ClearBrowsingHistoryOnExit') { should cmp 0 }
   end
 end
 

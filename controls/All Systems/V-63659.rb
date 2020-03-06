@@ -42,7 +42,7 @@ Administrative Templates >> Windows Components >> App Runtime >> \"Allow
 Microsoft accounts to be optional\" to \"Enabled\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'MSAOptional' }
-    its('MSAOptional') { should cmp == 1 }
+    its('MSAOptional') { should cmp 1 }
   end
 end
 
