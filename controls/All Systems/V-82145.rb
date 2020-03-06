@@ -51,7 +51,7 @@ Analytics\" to \"Enabled\" with \"Enable Windows Analytics collection\"
 selected in \"Options:\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection') do
     it { should have_property 'LimitEnhancedDiagnosticDataWindowsAnalytics' }
-   its('LimitEnhancedDiagnosticDataWindowsAnalytics') { should cmp == 1 }
+    its('LimitEnhancedDiagnosticDataWindowsAnalytics') { should cmp == 1 }
   end 
 end
 
