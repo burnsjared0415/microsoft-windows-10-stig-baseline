@@ -47,7 +47,7 @@ configured under Computer Configuration >> Administrative Templates >> Windows
 Components >> Windows Defender SmartScreen >> Microsoft Edge."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge\\PhishingFilter') do
     it { should have_property 'EnabledV9' }
-    its('EnabledV9') { should cmp == 1 }
+    its('EnabledV9') { should cmp 1 }
   end
 end
 

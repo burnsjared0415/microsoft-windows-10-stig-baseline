@@ -1,17 +1,17 @@
-control "V-77189" do
+control "V-77243" do
   title "Exploit Protection mitigations in Windows 10 must be configured for
-Acrobat.exe."
+OUTLOOK.EXE."
   desc  "Exploit protection in Windows 10 provides a means of enabling
 additional mitigations against potential threats at the system and application
 level. Without these additional application protections, Windows 10 may be
 subject to various exploits."
   impact 0.5
   tag severity: nil
-  tag gtitle: "WN10-EP-000070"
-  tag gid: "V-77189"
-  tag rid: "SV-91885r3_rule"
-  tag stig_id: "WN10-EP-000070"
-  tag fix_id: "F-84325r4_fix"
+  tag gtitle: "WN10-EP-000220"
+  tag gid: "V-77243"
+  tag rid: "SV-91939r3_rule"
+  tag stig_id: "WN10-EP-000220"
+  tag fix_id: "F-84363r4_fix"
   tag cci: ["CCI-000366"]
   tag nist: ["CM-6 b", "Rev_4"]
   tag false_negatives: nil
@@ -30,7 +30,7 @@ This is applicable to unclassified systems, for other systems this is NA.
 
 Run \"Windows PowerShell\" with elevated privileges (run as administrator).
 
-Enter \"Get-ProcessMitigation -Name Acrobat.exe\".
+Enter \"Get-ProcessMitigation -Name OUTLOOK.EXE\".
 (Get-ProcessMitigation can be run without the -Name parameter to get a list of
 all application mitigations configured.)
 
@@ -40,7 +40,6 @@ DEP:
 Enable: ON
 
 ASLR:
-BottomUp: ON
 ForceRelocateImages: ON
 
 Payload:
@@ -55,13 +54,12 @@ The PowerShell command produces a list of mitigations; only those with a
 required status of \"ON\" are listed here. If the PowerShell command does not
 produce results, ensure the letter case of the filename within the command
 syntax matches the letter case of the actual filename on the system."
-  tag fix: "Ensure the following mitigations are turned \"ON\" for Acrobat.exe:
+  tag fix: "Ensure the following mitigations are turned \"ON\" for OUTLOOK.EXE:
 
 DEP:
 Enable: ON
 
 ASLR:
-BottomUp: ON
 ForceRelocateImages: ON
 
 Payload:
@@ -80,5 +78,10 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\".  It is recommended the file be in a read-only network location."
+  describe "Check Ensure Exploit Protection system-level mitigation to validate OUTLOOK.EXE is set to DEP is ON; ASLR ForceRelocateImages ON; 
+  Payload EnableExportAddressFilter is ON; Payload EnableExportAddressFilterPlus is ON; Payload EnableImportAddressFilter is ON; Payload EnableRopStackPivot is ON; Payload EnableRopCallerCheck is ON;
+  Payload EnableRopSimExec is ON by running Get-ProcessMitigation -Name OUTLOOK.EXE in PowerShell Command"  do
+    skip "Setting must be ON to pass check"
+  end
 end
 

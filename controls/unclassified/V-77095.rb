@@ -73,6 +73,6 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
   describe "Check Ensure Exploit Protection system-level mitigation to validate ASLR BottomUp is set to ON or NOTSET by running Get-ProcessMitigation -System in PowerShell Command"
-    skip "Setting much be On or NOTSET to pass check"
+    skip "Setting must be ON or NOTSET to pass check"
   end
 end
