@@ -70,14 +70,15 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
-  get_details = command('Get-ProcessMitigation -System | FindStr "Heap TerminateOnError"').stdout.strip
-  remove_heap = command('get_details | Select-Object -Skip 1').stdout.strip
-  setting = remove_heap[41..47]
+  script = <<-EOH
+  $get_details = Get-ProcessMitigation -System | FindStr "Heap TeminateOnError"
+  $remove_heap = $get_details[1]
+  $setting = $remove_heap[41..47]
+  write-output $setting
+  EOH
 
-  if setting != "OFF"
-    describe "Heap TerminateOnError is not a finding" do
-      skip "Heap TerminateOnError is not a finding"
+    describe powershell(script) do
+      its('stdout') { should_not eq "O\r\n\O\r\nF\r\n" }
     end
-  end
 end
 
