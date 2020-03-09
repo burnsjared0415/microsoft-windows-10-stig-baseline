@@ -78,5 +78,6 @@ is_dep_enabled = command('wmic OS Get DataExecutionPrevention_SupportPolicy | FI
     skip 'Exploit Protection system-level mitigation, \"Data Execution Prevention (DEP)\", is turned on'
     end
   end
+ end
 end
 
