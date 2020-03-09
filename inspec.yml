@@ -8,22 +8,22 @@ summary: "The Windows 10 Security Technical Implementation Guide (STIG) is publi
 version: 1.19
 
 attributes:
- - name: backup_operators
+- name: backup_operators
     type: array
     description: 'List of authorized users in the Backup Operators Group'
     default: []
 
-  - name: administrators
+- name: administrators
     type: array
     description: 'List of authorized users in the local Administrators group'
     default: []
 
-  - name: hyper_v_admin
+- name: hyper_v_admin
     type: array
     description: 'List of authorized users in the local Hyper-V group'
     default: []
     
-  - name: LegalNoticeText
+- name: LegalNoticeText
     type: string
     default: "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
     By using this IS (which includes any device attached to this IS), you consent
@@ -45,6 +45,6 @@ attributes:
     communications and work product are private and confidential.  See User
     Agreement for details."
 
-  - name: LegalNoticeCaption
+- name: LegalNoticeCaption
     type: string
     default: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
