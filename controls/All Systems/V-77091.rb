@@ -70,14 +70,15 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
-is_dep_enabled = command('wmic OS Get DataExecutionPrevention_SupportPolicy | FINDSTR /V DataExecutionPrevention_SupportPolicy').stdout.strip
-
-  if is_dep_enabled != 0
-    impact 0.0
-    describe 'The DEP is Enabled on System' do
-    skip 'Exploit Protection system-level mitigation, \"Data Execution Prevention (DEP)\", is turned on'
+  script = <<-EOH
+  $dep = wmic OS Get DataExecutionPrevention_SupportPolicy | FINDSTR /V DataExecutionPrevention_SupportPolicy
+  $dep_trim = $dep[1]
+  $dep_enabled = dep_trim.trim()
+  write-output $dep_enabled
+  EOH
+  
+    describe powershell(script) do
+      its('stdout') { should_not eq "0\r\n" }
     end
-  end
- end
 end
 
