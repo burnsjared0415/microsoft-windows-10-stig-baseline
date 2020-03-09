@@ -71,7 +71,7 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
   get_details = command('Get-ProcessMitigation -System | FindStr "Heap TerminateOnError"').stdout.strip
-  remove_heap = command('get_details | Select-Object -Skip 1')
+  remove_heap = command('get_details | Select-Object -Skip 1').stdout.strip
   setting = remove_heap[41..47]
 
   if setting != "OFF"
