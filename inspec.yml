@@ -12,3 +12,13 @@ attributes:
   type: array
   description: 'List of authorized users in the local Backup Operators Group'
   default: []
+
+- name: administrators
+  type: array
+  description: 'List of authorized users in the local Administrators group'
+  default: []
+
+- name: hyper_v_admin
+  type: array
+  description: 'List of authorized users in the Hyper-V Group'
+  default: []
