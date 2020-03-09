@@ -78,5 +78,6 @@ configured to \"Enabled\" with file name and location defined under
     describe "Heap TerminateOnError is not a finding" do
       skip "Heap TerminateOnError is not a finding"
     end
+  end
 end
 
