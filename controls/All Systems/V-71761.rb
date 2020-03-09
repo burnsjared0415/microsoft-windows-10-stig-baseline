@@ -54,5 +54,5 @@ Audit Policies >> Policy Change >> \"Audit Authorization Policy Change\" with
     describe audit_policy do
       its('Authorization Policy Change') { should eq 'Success and Failure' }
     end
+  end
 end
-

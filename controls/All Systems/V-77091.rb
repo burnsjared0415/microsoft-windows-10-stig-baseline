@@ -73,9 +73,10 @@ configured to \"Enabled\" with file name and location defined under
 is_dep_enabled = command('wmic OS Get DataExecutionPrevention_SupportPolicy | FINDSTR /V DataExecutionPrevention_SupportPolicy').stdout.strip
 
   if is_dep_enabled != 0
-  impact 0.0
-  describe 'The DEP is Enabled on System' do
-  skip 'Exploit Protection system-level mitigation, \"Data Execution Prevention (DEP)\", is turned on'
+    impact 0.0
+    describe 'The DEP is Enabled on System' do
+    skip 'Exploit Protection system-level mitigation, \"Data Execution Prevention (DEP)\", is turned on'
+    end
   end
 end
 
