@@ -71,14 +71,15 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
   script = <<-EOH
-  $get_details = Get-ProcessMitigation -System | FindStr "Heap TeminateOnError"
-  $remove_heap = $get_details[1]
-  $setting = $remove_heap[41..47]
-  write-output $setting
+  $convert_json = Get-ProcessMitigation -System | ConvertTo-Json
+  $convert_out_json = ConvertFrom-Json -InputObject $convert_json
+  $select_object = $convert_out_json.Heap | Select TerminateOnError
+  $result = $select_object.TerminateOnError
+  write-output $result
   EOH
 
-    describe powershell(script) do
-      its('stdout') { should_not eq "O\r\n\O\r\nF\r\n" }
+    decribe powershell(script) do
+      its('stdout') { should_not eq "2\r\n"}
     end
 end
 

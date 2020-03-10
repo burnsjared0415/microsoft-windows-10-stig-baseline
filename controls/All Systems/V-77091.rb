@@ -70,15 +70,16 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
-  script = <<-EOH
-  $dep = wmic OS Get DataExecutionPrevention_SupportPolicy | FINDSTR /V DataExecutionPrevention_SupportPolicy
-  $dep_trim = $dep[1]
-  $dep_enabled = dep_trim.trim()
-  write-output $dep_enabled
-  EOH
-  
-    describe powershell(script) do
-      its('stdout') { should_not eq "0\r\n" }
-    end
+script = <<-EOH
+$convert_json = Get-ProcessMitigation -System | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object = $convert_out_json.Dep | Select Enable
+$result = $select_object.Enable
+write-output $result
+EOH
+
+  decribe powershell(script) do
+    its('stdout') { should_not eq "2\r\n"}
+  end
 end
 

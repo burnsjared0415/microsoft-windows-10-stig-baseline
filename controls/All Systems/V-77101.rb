@@ -71,9 +71,16 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel') do
-    it { should have_property 'DisableExceptionChainValidation' }
-    its('DisableExceptionChainValidation') { should cmp 0 }
+script = <<-EOH
+$convert_json = Get-ProcessMitigation -System | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object = $convert_out_json.SEHOP | Select Enable
+$result = $select_object.Enable
+write-output $result
+EOH
+
+  decribe powershell(script) do
+    its('stdout') { should_not eq "2\r\n"}
   end
 end
 
