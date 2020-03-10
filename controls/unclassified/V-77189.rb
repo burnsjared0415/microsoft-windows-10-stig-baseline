@@ -80,6 +80,7 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\".  It is recommended the file be in a read-only network location."
+
 dep_script = <<-EOH
 $convert_json = Get-ProcessMitigation -Name Acrobat.exe | ConvertTo-Json
 $convert_out_json = ConvertFrom-Json -InputObject $convert_json
@@ -102,14 +103,6 @@ $convert_out_json = ConvertFrom-Json -InputObject $convert_json
 $select_object_aslr_force_relocate_images = $convert_out_json.Aslr | Select ForceRelocateImages
 $result_aslr_force_relocate_images = $select_object_aslr_force_relocate_images.ForceRelocateImages
 write-output $result_aslr_force_relocate_images
-EOH
-
-payload_enexpaddrfil_script = <<-EOH
-$convert_json = Get-ProcessMitigation -Name Acrobat.exe | ConvertTo-Json
-$convert_out_json = ConvertFrom-Json -InputObject $convert_json
-$select_object_payload_enexportaddrfil = $convert_out_json.Payload | Select EnableExportAddressFilter
-$result_payload_enexportaddrfil = $select_object_payload_enexportaddrfil.EnableExportAddressFilter
-write-output $result_payload_enexportaddrfil
 EOH
 
 payload_enexpaddrfil_script = <<-EOH

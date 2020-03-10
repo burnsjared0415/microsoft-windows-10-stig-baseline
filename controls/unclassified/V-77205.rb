@@ -64,6 +64,7 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\". It is recommended the file be in a read-only network location."
+  
   dep_script = <<-EOH
   $convert_json = Get-ProcessMitigation -Name firefox.exe | ConvertTo-Json
   $convert_out_json = ConvertFrom-Json -InputObject $convert_json
