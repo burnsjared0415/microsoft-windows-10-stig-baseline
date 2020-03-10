@@ -78,10 +78,96 @@ Administrative Settings >> Windows Components >> Windows Defender Exploit Guard
 >> Exploit Protection >> \"Use a common set of exploit protection settings\"
 configured to \"Enabled\" with file name and location defined under
 \"Options:\".  It is recommended the file be in a read-only network location."
-  describe "Check Ensure Exploit Protection system-level mitigation to validate OUTLOOK.EXE is set to DEP is ON; ASLR ForceRelocateImages ON; 
-  Payload EnableExportAddressFilter is ON; Payload EnableExportAddressFilterPlus is ON; Payload EnableImportAddressFilter is ON; Payload EnableRopStackPivot is ON; Payload EnableRopCallerCheck is ON;
-  Payload EnableRopSimExec is ON by running Get-ProcessMitigation -Name OUTLOOK.EXE in PowerShell Command"  do
-    skip "Setting must be ON to pass check"
+  
+dep_script = <<-EOH
+$convert_json = Get-ProcessMitigation -Name OUTLOOK.EXE | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object_dep_enable = $convert_out_json.Dep | Select Enable
+$result_dep_enable = $select_object_dep_enable.Enable
+write-output $result_dep_enable 
+EOH
+
+aslr_forcerelocimage_script = <<-EOH
+$convert_json = Get-ProcessMitigation -Name OUTLOOK.EXE | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object_aslr_force_relocate_images = $convert_out_json.Aslr | Select ForceRelocateImages
+$result_aslr_force_relocate_images = $select_object_aslr_force_relocate_images.ForceRelocateImages
+write-output $result_aslr_force_relocate_images
+EOH
+
+payload_enexpaddrfil_script = <<-EOH
+$convert_json = Get-ProcessMitigation -Name OUTLOOK.EXE | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object_payload_enexportaddrfil = $convert_out_json.Payload | Select EnableExportAddressFilter
+$result_payload_enexportaddrfil = $select_object_payload_enexportaddrfil.EnableExportAddressFilter
+write-output $result_payload_enexportaddrfil
+EOH
+
+payload_enexpaddrfilplus_script = <<-EOH
+$convert_json = Get-ProcessMitigation -Name OUTLOOK.EXE | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object_payload_enexpaddrfilplus = $convert_out_json.Payload | Select EnableExportAddressFilterPlus
+$result_payload_enexpaddrfilplus = $select_object_payload_enexpaddrfilplus.EnableExportAddressFilterPlus
+write-output $result_payload_enexpaddrfilplus
+EOH
+
+payload_enimpaddrfil_script = <<-EOH
+$convert_json = Get-ProcessMitigation -Name OUTLOOK.EXE | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object_payload_enimpaddrfil = $convert_out_json.Payload | Select EnableImportAddressFilter
+$result_payload_enimpaddrfil = $select_object_payload_enimpaddrfil.EnableImportAddressFilter
+write-output $result_payload_enimpaddrfil
+EOH
+
+payload_enropstacpiv_script = <<-EOH
+$convert_json = Get-ProcessMitigation -Name OUTLOOK.EXE | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object_payload_enropstacpiv = $convert_out_json.Payload | Select EnableRopStackPivot
+$result_payload_enropstacpiv = $select_object_payload_enropstacpiv.EnableRopStackPivot
+write-output $result_payload_enropstacpiv
+EOH
+
+payload_enropcalleche_script = <<-EOH
+$convert_json = Get-ProcessMitigation -Name OUTLOOK.EXE | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object_payload_enropcalleche = $convert_out_json.Payload | Select EnableRopCallerCheck
+$result_payload_enropcalleche = $select_object_payload_enropcalleche.EnableRopCallerCheck
+write-output $result_payload_enropcalleche
+EOH
+
+payload_enropsimexec_script = <<-EOH
+$convert_json = Get-ProcessMitigation -Name OUTLOOK.EXE | ConvertTo-Json
+$convert_out_json = ConvertFrom-Json -InputObject $convert_json
+$select_object_payload_enropsimexec = $convert_out_json.Payload | Select EnableRopSimExec
+$result_payload_enropsimexec = $select_object_payload_enropsimexec.EnableRopSimExec
+write-output $result_payload_enropsimexec
+EOH
+
+  describe.one do
+    describe powershell(dep_script) do
+      its('stdout') { should_not eq "2\r\n" }
+    end
+    describe powershell(aslr_forcerelocimage_script) do
+      its('stdout') { should_not eq "2\r\n" }
+    end
+    describe powershell(payload_enexpaddrfil_script) do
+      its('stdout') { should_not eq "2\r\n" }
+    end
+    describe powershell(payload_enexpaddrfilplus_script) do
+      its('stdout') { should_not eq "2\r\n" }
+    end
+    describe powershell(payload_enimpaddrfil_script) do
+      its('stdout') { should_not eq "2\r\n" }
+    end
+    describe powershell(payload_enropstacpiv_script) do
+      its('stdout') { should_not eq "2\r\n" }
+    end
+    describe powershell(payload_enropcalleche_script) do
+      its('stdout') { should_not eq "2\r\n" }
+    end
+    describe powershell(payload_enropsimexec_script) do
+      its('stdout') { should_not eq "2\r\n" }
+    end
   end
 end
 
