@@ -78,7 +78,7 @@ $result = $select_object.Enable
 write-output $result
 EOH
 
-  decribe powershell(script) do
+  describe powershell(script) do
     its('strip') { should_not eq "2"}
   end
 end

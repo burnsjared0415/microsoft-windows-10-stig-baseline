@@ -81,7 +81,7 @@ configured to \"Enabled\" with file name and location defined under
   write-output $result
   EOH
 
-    decribe powershell(script) do
+    describe powershell(script) do
       its('strip') { should_not eq "2"}
     end
 end
