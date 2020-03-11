@@ -149,7 +149,6 @@ EOH
       its('strip') { should_not eq "2" }
     end
     describe powershell(payload_enropsimexec_script) do
-      desc 'Payload setting EnableRopSimExec is ON'
       its('strip') { should_not eq "2" }
     end
   end
