@@ -66,7 +66,7 @@ write-output $result_dep_enable
 EOH
 
   describe powershell(dep_script) do
-    its('stdout') { should_not eq "2\r\n" }
+    its('strip') { should_not eq "2" }
   end
 end
 

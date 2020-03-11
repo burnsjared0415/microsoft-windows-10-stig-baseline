@@ -80,7 +80,7 @@ write-output $result
 EOH
 
   decribe powershell(script) do
-    its('stdout') { should_not eq "2\r\n"}
+    its('strip') { should_not eq "2"}
   end
 end
 

@@ -90,13 +90,13 @@ configured to \"Enabled\" with file name and location defined under
   EOH
 
     describe powershell(dep_script) do
-      its('stdout') { should_not eq "2\r\n" }
+      its('strip') { should_not eq "2" }
     end
     describe powershell(aslr_bottomup_script) do
-      its('stdout') { should_not eq "2\r\n" }
+      its('strip') { should_not eq "2" }
     end
     describe powershell(aslr_forcerelocimage_script) do
-      its('stdout') { should_not eq "2\r\n" }
+      its('strip') { should_not eq "2" }
     end
 end
 

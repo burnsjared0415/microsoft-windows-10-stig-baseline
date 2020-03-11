@@ -101,16 +101,16 @@ EOH
 
   describe.one do
     describe powershell(dep_script) do
-      its('stdout') { should_not eq "2\r\n" }
+      its('strip') { should_not eq "2" }
     end
     describe powershell(payload_enropstacpiv_script) do
-      its('stdout') { should_not eq "2\r\n" }
+      its('strip') { should_not eq "2" }
     end
     describe powershell(payload_enropcalleche_script) do
-      its('stdout') { should_not eq "2\r\n" }
+      its('strip') { should_not eq "2" }
     end
     describe powershell(payload_enropsimexec_script) do
-      its('stdout') { should_not eq "2\r\n" }
+      its('strip') { should_not eq "2" }
     end
   end
 end
