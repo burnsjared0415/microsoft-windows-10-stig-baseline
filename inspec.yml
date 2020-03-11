@@ -11,21 +11,21 @@ attributes:
 - name: backup_operators
   type: array
   description: 'List of authorized users in the local Backup Operators Group'
-  default: []
+  input: []
 
 - name: administrators
   type: array
   description: 'List of authorized users in the local Administrators group'
-  default: []
+  input: []
 
 - name: hyper_v_admin
   type: array
   description: 'List of authorized users in the Hyper-V Group'
-  default: []
+  input: []
 
 - name: LegalNoticeText
   type: string
-  default: "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
+  input: "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
     By using this IS (which includes any device attached to this IS), you consent
     to the following conditions:
     -The USG routinely intercepts and monitors communications on this IS for
@@ -47,4 +47,4 @@ attributes:
     
 - name: LegalNoticeCaption
   type: string
-  default: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
+  input: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
