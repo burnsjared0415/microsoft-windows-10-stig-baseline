@@ -11,17 +11,17 @@ attributes:
 - name: backup_operators
   type: array
   description: 'List of authorized users in the local Backup Operators Group'
-  input: []
+  value: []
 
 - name: administrators
   type: array
   description: 'List of authorized users in the local Administrators group'
-  input: []
+  value: []
 
 - name: hyper_v_admin
   type: array
   description: 'List of authorized users in the Hyper-V Group'
-  input: []
+  value: []
 
 - name: LegalNoticeText
   type: string
