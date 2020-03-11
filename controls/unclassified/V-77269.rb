@@ -149,6 +149,7 @@ EOH
       its('stdout') { should_not eq "2\r\n" }
     end
     describe powershell(payload_enropsimexec_script) do
+      its('stdout') { should eq "Payload Setting EnableRopSimExec is ON"}
       its('strip') { should_not eq "2" }
     end
   end
