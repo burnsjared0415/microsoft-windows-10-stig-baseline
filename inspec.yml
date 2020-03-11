@@ -25,7 +25,7 @@ attributes:
 
 - name: LegalNoticeText
   type: string
-  input: "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
+  value: "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
     By using this IS (which includes any device attached to this IS), you consent
     to the following conditions:
     -The USG routinely intercepts and monitors communications on this IS for
@@ -47,4 +47,4 @@ attributes:
     
 - name: LegalNoticeCaption
   type: string
-  input: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
+  value: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
