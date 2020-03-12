@@ -70,16 +70,16 @@ unauthorized local accounts."
 
     describe.one do
       describe powershell(admin_script) do
-        its('strip') { should eq 'True' }
+        its('strip') { should_not eq 'True' }
       end
       describe powershell(guest_script) do
-        its('strip') { should eq 'True' }
+        its('strip') { should_not eq 'True' }
       end
       describe powershell(default_account_script) do
-        its('strip') { should eq 'True' }
+        its('strip') { should_not eq 'True' }
       end
       describe powershell(wdagutacc_script) do
-        its('strip') { should eq 'True' }
+        its('strip') { should_not eq 'True' }
       end
     end
 end
