@@ -68,9 +68,10 @@ Policy\" to \"Not Configured\" or \"Enabled\" with any option other than
       it { should have_property 'DriverLoadPolicy' }
       its('DriverLoadPolicy') { should cmp 8 }
     end
-  end
-  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch') do
-    it { should_not have_property 'DriverLoadPolicy' }
+    describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch') do
+      it { should have_property 'DriverLoadPolicy' }
+      its('DriverLoadPolicy') { should_not cmp 7 }
+    end
   end
 end
 

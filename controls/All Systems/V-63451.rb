@@ -48,10 +48,16 @@ Configuration >> System Audit Policies >> Detailed Tracking >> \"Audit PNP
 Activity\" with \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its('PNP Activity') { should eq 'Success' }
+      its('Plug and Play Events') { should eq 'Success' }
     end
     describe audit_policy do
-      its('PNP Activity') { should eq 'Success and Failure' }
+      its('Plug and Play Events') { should eq 'Success and Failure' }
+    end
+    describe command("AuditPol /get /category:* | Findstr /c:'Plug and Play Events'") do
+      its('stdout') { should match /Plug and Play Events                    Success/ }
+    end
+    describe command("AuditPol /get /category:* | Findstr /c:'Plug and Play Events'") do
+      its('stdout') { should match /Plug and Play Events                    Success and Failure/ }
     end
   end
 end

@@ -35,7 +35,7 @@ Settings >> Security Settings >> Account Policies >> Password Policy >> \"Store
 passwords using reversible encryption\" to \"Disabled\"."
   
   describe security_policy do
-    its('StorePasswordUsingReversibleEncryption') { should be eq 0 }
+    its('ClearTextPassword') { should eq 0 }
   end 
 end
 

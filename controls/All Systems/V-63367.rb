@@ -40,14 +40,47 @@ All of the built-in accounts may not exist on a system, depending on the
 Windows 10 version."
   tag fix: "Limit local user accounts on domain-joined systems.  Remove any
 unauthorized local accounts."
-  describe security_policy do
-    its('EnableAdministrator') { should be 0 }
-  end
-  describe security_policy do
-    its('EnableGuestAccount') { should be 0 }
-  end
-  describe security_policy do
-    its('EnableDefaultAccount') { should be 0 }
-  end
+  admin_script = <<-EOH
+  $convert_json = Get-LocalUser -Name "Administrator" | ConvertTo-Json
+  $convert_out_json = ConvertFrom-Json -InputObject $convert_json
+  $select_object_admin = $convert_out_json.Enabled
+  write-output $select_object_admin
+  EOH
+
+  guest_script = <<-EOH
+  $convert_json = Get-LocalUser -Name "Guest" | ConvertTo-Json
+  $convert_out_json = ConvertFrom-Json -InputObject $convert_json
+  $select_object_guest = $convert_out_json.Enabled
+  write-output $select_object_guest
+  EOH
+
+  default_account_script = <<-EOH
+  $convert_json = Get-LocalUser -Name "DefaultAccount" | ConvertTo-Json
+  $convert_out_json = ConvertFrom-Json -InputObject $convert_json
+  $select_object_default_account = $convert_out_json.Enabled
+  write-output $select_object_default_account
+  EOH
+
+  wdagutacc_script = <<-EOH
+  $convert_json = Get-LocalUser -Name "WDAGUtilityAccount" | ConvertTo-Json
+  $convert_out_json = ConvertFrom-Json -InputObject $convert_json
+  $select_object_wdagutacc = $convert_out_json.Enabled
+  write-output $select_object_wdagutacc
+  EOH
+
+    describe.one do
+      describe powershell(admin_script) do
+        its('strip') { should eq 'True' }
+      end
+      describe powershell(guest_script) do
+        its('strip') { should eq 'True' }
+      end
+      describe powershell(default_account_script) do
+        its('strip') { should eq 'True' }
+      end
+      describe powershell(wdagutacc_script) do
+        its('strip') { should eq 'True' }
+      end
+    end
 end
 

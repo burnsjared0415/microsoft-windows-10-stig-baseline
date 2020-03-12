@@ -47,10 +47,16 @@ Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> System >> \"Audit IPSec Driver\" with \"Failure\" selected."
   describe.one do
     describe audit_policy do
-      its('IPSec Driver') { should eq 'Failure' }
+      its('IPsec Driver') { should eq 'Failure' }
     end
     describe audit_policy do
-      its('IPSec Driver') { should eq 'Success and Failure' }
+      its('IPsec Driver') { should eq 'Success and Failure' }
+    end
+    describe command("AuditPol /get /category:* | Findstr /c:'IPsec Driver'") do
+      its('stdout') { should match /IPsec Driver                    Failure/ }
+    end
+    describe command("AuditPol /get /category:* | Findstr /c:'IPsec Driver'") do
+      its('stdout') { should match /IPsec Driver                    Success and Failure/ }
     end
   end  
 end
