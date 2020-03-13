@@ -47,6 +47,7 @@ Logon/Logoff >> Account Lockout - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Logon/Logoff >> \"Audit Account Lockout\" with \"Success\"
 selected."
+
   describe.one do
     describe audit_policy do
       its('Account Lockout') { should eq 'Success and Failure' }

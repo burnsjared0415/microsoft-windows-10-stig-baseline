@@ -47,6 +47,7 @@ Account Logon >> Credential Validation - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Account Logon >> \"Audit Credential Validation\" with
 \"Success\" selected."
+
   describe.one do
     describe audit_policy do
       its('Credential Validation') { should eq 'Success' }

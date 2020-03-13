@@ -47,6 +47,7 @@ Logon/Logoff >> Special Logon - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Logon/Logoff >> \"Audit Special Logon\" with \"Success\"
 selected."
+
   describe.one do
     describe audit_policy do
       its('Special Logon') { should eq 'Success' }

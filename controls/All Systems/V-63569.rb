@@ -38,7 +38,8 @@ Value: 0x00000000 (0)"
   tag fix: "Configure the policy value for Computer Configuration >>
 Administrative Templates >> Network >> Lanman Workstation >> \"Enable insecure
 guest logons\" to \"Disabled\"."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation') do
+
+  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation") do
     it { should have_property 'AllowInsecureGuestAuth' }
     its('AllowInsecureGuestAuth') { should cmp 0 }
   end  

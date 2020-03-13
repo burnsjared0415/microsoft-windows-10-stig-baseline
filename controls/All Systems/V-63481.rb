@@ -47,6 +47,7 @@ Policy Change >> Authentication Policy Change - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Policy Change >> \"Audit Authentication Policy Change\" with
 \"Success\" selected."
+
   describe.one do
     describe audit_policy do
       its('Authentication Policy Change') { should eq 'Success' }

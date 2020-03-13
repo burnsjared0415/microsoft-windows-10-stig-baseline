@@ -46,6 +46,7 @@ Policy Change >> Audit Policy Change - Failure"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> Policy Change >> \"Audit Audit Policy Change\" with
 \"Failure\" selected."
+
   describe.one do
     describe audit_policy do
       its('Audit Policy Change') { should eq 'Failure' }

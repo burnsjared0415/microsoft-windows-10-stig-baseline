@@ -38,11 +38,14 @@ is a finding."
 Settings >> Security Settings >> Account Policies >> Account Lockout Policy >>
 \"Account lockout threshold\" to \"3\" or less invalid logon attempts
 (excluding \"0\" which is unacceptable)."
-  describe security_policy do
-    its('LockoutBadCount') { should be <= 3 }
+
+  describe.one do
+    describe security_policy do
+      its('LockoutBadCount') { should be <= 3 }
+    end
+    describe security_policy do
+      ts('LockoutBadCount') { should be > 0 }
+    end
   end
-  describe security_policy do
-    its('LockoutBadCount') { should be > 0 }
-  end 
 end
 

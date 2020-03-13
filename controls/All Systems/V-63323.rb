@@ -65,9 +65,22 @@ configured for use. (Versions 2.0 or 1.2 support Credential Guard.)
 The TPM must be enabled in the firmware.
 Run \"tpm.msc\" for configuration options in Windows."
   
-  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion') do
-   it { should have_property 'ReleaseId' }
-   its('ReleaseId') { should be >= '1703' }
+if is_domain == 'WORKGROUP'
+  impact 0.0
+  desc 'This system is not joined to a domain, therfore this control is not appliable as it does not apply to standalone systems'
+end
+
+if is_domain != 'WORKGROUP'
+  tpm_ready = command('Get-Tpm | select -expand TpmReady').stdout.strip
+  tpm_present = command('Get-Tpm | select -expand TpmPresent').stdout.strip
+    describe 'Trusted Platform Module (TPM) TpmReady' do
+      subject { tpm_ready }
+      it { should eq 'True' }
+    end
+    describe 'Trusted Platform Module (TPM) TpmPresent' do
+      subject { tpm_present }
+      it { should eq 'True' }
+    end
   end
 end
 

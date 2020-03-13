@@ -45,6 +45,7 @@ System >> IPSec Driver - Failure"
   tag fix: "Configure the policy value for Computer Configuration >> Windows
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> System >> \"Audit IPSec Driver\" with \"Failure\" selected."
+
   describe.one do
     describe audit_policy do
       its('IPsec Driver') { should eq 'Failure' }

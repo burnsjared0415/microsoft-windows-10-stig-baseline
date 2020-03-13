@@ -47,6 +47,7 @@ System >> Security State Change - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> System >> \"Audit Security State Change\" with \"Success\"
 selected."
+
    describe.one do
     describe audit_policy do
       its('Security State Change') { should eq 'Success' }

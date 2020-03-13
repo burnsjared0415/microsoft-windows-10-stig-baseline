@@ -39,7 +39,8 @@ Value: 1"
 Configure the policy value for Computer Configuration >> Administrative
 Templates >> Control Panel >> Personalization >> \"Prevent enabling lock screen
 camera\" to \"Enabled\"."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization') do
+
+  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization") do
   it { should have_property 'NoLockScreenCamera' }
   its('NoLockScreenCamera') { should cmp 1 }
  end  

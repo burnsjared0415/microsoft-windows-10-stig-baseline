@@ -46,6 +46,7 @@ Detailed Tracking >> Plug and Play Events - Success"
   tag fix: "Computer Configuration >> Windows Settings >> Advanced Audit Policy
 Configuration >> System Audit Policies >> Detailed Tracking >> \"Audit PNP
 Activity\" with \"Success\" selected."
+
   describe.one do
     describe audit_policy do
       its('Plug and Play Events') { should eq 'Success' }

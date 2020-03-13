@@ -35,11 +35,14 @@ is a finding.  If the value is set to \"0\" (never expires), this is a finding."
 Settings >> Security Settings >> Account Policies >> Password Policy >>
 \"Maximum Password Age\" to \"60\" days or less (excluding \"0\" which is
 unacceptable)."
-  describe security_policy do
-    its('MaximumPasswordAge') { should be <= 60 }
+
+  describe.one do
+    describe security_policy do
+      its('MaximumPasswordAge') { should be <= 60 }
+    end
+    describe security_policy do
+      its('MaximumPasswordAge') { should be > 0 }
+    end 
   end
-  describe security_policy do
-    its('MaximumPasswordAge') { should be > 0 }
-  end  
 end
 

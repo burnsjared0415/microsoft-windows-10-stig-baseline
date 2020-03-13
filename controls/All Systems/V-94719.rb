@@ -4,6 +4,7 @@ activated by voice while the system is locked."
   desc  "Allowing Windows apps to be activated by voice from the lock screen
 could allow for unauthorized use. Requiring logon will ensure the apps are only
 used by authorized personnel."
+
   impact 0.5
   tag severity: nil
   tag gtitle: "WN10-CC-000365"
@@ -56,15 +57,21 @@ The requirement is NA if the policy value for Computer Configuration >>
 Administrative Templates >> Windows Components >> App Privacy >> \"Let Windows
 apps activate with voice\" is configured to \"Enabled\" with “Default for all
 Apps:” set to “Force Deny”."
+if (registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft NT\\CurrentVersion").ReleaseId >= 1903 )
   describe.one do
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy') do
+    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy") do
       it { should have_property 'LetAppsActivateWithVoiceAboveLock' }
       its('LetAppsActivateWithVoiceAboveLock') { should cmp 2 }
     end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy') do
+    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy") do
       it { should have_property 'LetAppsActivateWithVoice' }
       its('LetAppsActivateWithVoice') { should cmp 2 }
     end
+  end
+else
+  impact 0.0
+  describe "This setting requires v1903 or later of Windows 10; it is NA for prior versions." do
+    skip "This setting requires v1903 or later of Windows 10; it is NA for prior versions."
   end
 end
 

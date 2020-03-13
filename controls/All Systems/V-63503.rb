@@ -47,6 +47,7 @@ System >> Other System Events - Failure"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> System >> \"Audit Other System Events\" with \"Failure\"
 selected."
+
    describe.one do
     describe audit_policy do
       its('Other System Events') { should eq 'Failure' }

@@ -47,6 +47,7 @@ System >> Security System Extension - Success"
 Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
 Audit Policies >> System >> \"Audit Security System Extension\" with
 \"Success\" selected."
+
   describe.one do
     describe audit_policy do
       its('Security System Extension') { should eq 'Success' }
